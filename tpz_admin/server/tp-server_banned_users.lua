@@ -68,6 +68,25 @@ ResetBanBySteamIdentifier = function(steamIdentifier)
 	exports.ghmattimysql:execute("UPDATE `banned_users` SET `banned` = @banned, `bannedReason` = @bannedReason, `warnings` = @warnings WHERE `identifier` = @identifier", Parameters )
 end
 
+AddPlayerWarning = function(target, reason)
+	local tPlayer         = TPZ.GetPlayer(tonumber(target))
+	local targetSteamName = GetPlayerName(target)
+
+	local PlayersList = GetPlayerList()
+
+	PlayersList[target].warnings = PlayersList[target].warnings + 1
+
+	local WarnParameters = { ['identifier'] = tPlayer.getIdentifier(), ['warnings'] = PlayersList[target].warnings }
+	exports.ghmattimysql:execute("UPDATE `banned_users` SET `warnings` = @warnings WHERE `identifier` = @identifier", WarnParameters )
+
+	if PlayersList[target].warnings >= Config.MaxPlayerWarnings then
+	  
+	  print("The following player: " .. targetSteamName .. " with the identifier: " .. tPlayer.getIdentifier() .. " has been permanently banned by reaching the maximum warnings.")
+	  BanPlayerBySource(target, Locales['BAN_REASON_REACHED_MAXIMUM_WARNINGS_DESCRIPTION'])
+	end
+
+end
+
 -----------------------------------------------------------
 --[[ Base Events ]]--
 -----------------------------------------------------------
