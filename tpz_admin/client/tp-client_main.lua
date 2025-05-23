@@ -1,3 +1,4 @@
+local TPZ = exports.tpz_core:getCoreAPI()
 
 local PlayerData = { 
     UserRoles = nil,
@@ -11,7 +12,7 @@ local PlayerData = {
 
 -- @HasAllowlistedDiscordRole returns if the player is allowlisted / not.
 HasPermittedRole = function(userRoles, listedRoles)
-    local userRolesLength = GetTableLength(userRoles)
+    local userRolesLength = TPZ.GetTableLength(userRoles)
   
     if userRolesLength <= 0 then
         return false
