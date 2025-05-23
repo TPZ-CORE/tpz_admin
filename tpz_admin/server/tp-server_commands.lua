@@ -147,7 +147,9 @@ Citizen.CreateThread(function()
                 SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
                 return
               end
-
+									
+              local reasonConcat = table.concat(args, " ", 2)
+									
               local isBanned = tPlayer.addWarning()
 
               Wait(1000) -- mandatory wait.
