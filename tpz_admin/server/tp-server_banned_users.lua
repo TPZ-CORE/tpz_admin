@@ -72,7 +72,9 @@ AddPlayerWarning = function(target, reason)
 	local tPlayer         = TPZ.GetPlayer(tonumber(target))
 	local targetSteamName = GetPlayerName(target)
 
-	local PlayersList = GetPlayerList()
+	local isBanned        = false
+
+	local PlayersList     = GetPlayerList()
 
 	PlayersList[target].warnings = PlayersList[target].warnings + 1
 
@@ -83,7 +85,11 @@ AddPlayerWarning = function(target, reason)
 	  
 	  print("The following player: " .. targetSteamName .. " with the identifier: " .. tPlayer.getIdentifier() .. " has been permanently banned by reaching the maximum warnings.")
 	  BanPlayerBySource(target, Locales['BAN_REASON_REACHED_MAXIMUM_WARNINGS_DESCRIPTION'])
+
+	  isBanned = true
 	end
+
+	return isBanned
 
 end
 
