@@ -58,8 +58,4 @@ AddEventHandler('tpz_admin:requestUserRoles', function()
 	
 	PlayersList[_source].source   = _source
 	PlayersList[_source].isFrozen = false
-	PlayersList[_source].warnings = 0
-
-	local warnings = GetPlayerWarningsBySource(_source)
-	PlayersList[_source].warnings = warnings
 end)
