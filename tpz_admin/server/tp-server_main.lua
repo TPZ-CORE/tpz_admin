@@ -25,5 +25,5 @@ AddEventHandler('tpz_admin:requestUserRoles', function()
 	local group     = xPlayer.getGroup()
 	local userRoles = xPlayer.getDiscordRoles()
 
-	TriggerClientEvent("tpz_core:updateUserRoles", _source, { userRoles, group })
+	TriggerClientEvent("tpz_admin:receive", _source, { userRoles, group })
 end)
