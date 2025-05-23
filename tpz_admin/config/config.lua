@@ -1,6 +1,6 @@
 Config = {}
 
-Config.DevMode = true
+Config.DevMode = false
 
 -- The following is only when a notification sent while NUI is open (It has its own notification system).
 Config.NotificationColors = { 
