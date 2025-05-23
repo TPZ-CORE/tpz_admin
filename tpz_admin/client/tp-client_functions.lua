@@ -56,36 +56,3 @@ RegisterNoClipPromptActions = function()
     Citizen.InvokeNative(0xC5F428EE08FA7F2C, NoClipPrompt4, true)
     PromptRegisterEnd(NoClipPrompt4)
 end
-
-
-
---[[-------------------------------------------------------
- General Functions
-]]---------------------------------------------------------
-
--- @GetTableLength returns the length of a table.
-GetTableLength = function(T)
-	local count = 0
-	for _ in pairs(T) do count = count + 1 end
-	return count
-end
-
-function StartsWith(String,Start)
-	return string.sub(String,1,string.len(Start))==Start
-end
-
-function Split(inputstr, sep)
-
-	if sep == nil then
-		sep = "%s"
-	end
-  
-	local t = {}
-  
-	for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
-			table.insert(t, str)
-	end
-  
-	return t
-  
-end
