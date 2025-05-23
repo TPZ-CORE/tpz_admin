@@ -23,7 +23,7 @@ exports('getAPI', function()
 	end
 
 	self.AddPlayerWarning = function(source, reason)
-		AddPlayerWarning(source, reason)
+		return AddPlayerWarning(source, reason)
 	end
 
 end)
