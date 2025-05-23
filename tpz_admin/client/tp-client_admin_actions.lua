@@ -1,3 +1,4 @@
+local TPZ = exports.tpz_core:getCoreAPI()
 
 local ActionData = { 
     HasNoClip            = false,
@@ -278,7 +279,7 @@ Citizen.CreateThread(function()
 
             if IsDisabledControlJustPressed(1, Controls['SPEED_ADJUSTMENT']) then
 
-                local speedsLenth = GetTableLength(NoClipData.Speeds)
+                local speedsLenth = TPZ.GetTableLength(NoClipData.Speeds)
 
                 if speedsLenth > 1 then
 
