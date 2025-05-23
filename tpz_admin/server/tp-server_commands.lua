@@ -124,36 +124,43 @@ Citizen.CreateThread(function()
 
             elseif command.ActionType == 'BAN' then
 
-              local reason = args[2]
+              local reason, duration = args[2], args[3]
 
-              if reason == nil or reason == '' then
+              if (reason == nil or reason == '') or (duration == nil or duration = '' or duration == 0 or tonumber(duration) == nil ) then
                 SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
                 return
               end
 
               local reason = table.concat(args, " ", 2)
 
-              BanPlayerBySource(target, reason)
+              duration = tonumber(duration)
+
+              tPlayer.ban(reason, duration)
               SendNotification(_source, Locales['BANNED_SELECTED_PLAYER'], "success")
               
             elseif command.ActionType == 'WARN' then
 
-              local isBanned = AddPlayerWarning(target, reason)
+              local reason = args[2]
+
+              if (reason == nil or reason == '') then
+                SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
+                return
+              end
+
+              local isBanned = tPlayer.addWarning()
+
+              Wait(1000) -- mandatory wait.
 
               if isBanned then
                 SendNotification(_source, Locales['BANNED_SELECTED_PLAYER_REACHED_WARNINGS'], "success")
+
               else
                 SendNotification(_source, Locales['WARNING_SENT'], "success")
               end
 
             elseif command.ActionType == 'RESET_WARNINGS' then
 
-              PlayersList[target].warnings = 0
-
-              local WarnParameters = { ['identifier'] = tPlayer.getIdentifier(), ['warnings'] = 0 }
-
-              exports.ghmattimysql:execute("UPDATE `banned_users` SET `warnings` = @warnings WHERE `identifier` = @identifier", WarnParameters )
-          
+              tPlayer.clearPlayerWarnings()
               SendNotification(_source, Locales['WARNINGS_RESET'], "success")
 
             end
