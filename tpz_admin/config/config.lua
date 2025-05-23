@@ -26,11 +26,11 @@ Config.AdminMenu = {
     Command = 'admin',
     Suggestion = "Execute this command to open the Admin Menu.",
 
-    PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-    PermittedDiscordGroups = { 'admin' },
+    PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+    PermittedGroups = { 'admin' },
     
     HistoryActions = {
-        PermittedDiscordRoles = { 670899926783361024, 709868210366840835 },
+        PermittedDiscordRoles = { 11111111111111111, 222222222222222222 },
     }
 }
 
@@ -39,8 +39,8 @@ Config.Noclip = {
     Command = 'noclip',
     Suggestion = "Execute this command for noclip.",
 
-    PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-    PermittedDiscordGroups = { 'admin' },
+    PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+    PermittedGroups = { 'admin' },
 
     Speeds = {
 
@@ -80,8 +80,8 @@ Config.Permissions = {
         ActionType = "HEAL", -- DO NOT TOUCH
         Label = "Heal",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false,  -- No command available, TPZ_CORE Commands already contains /heal [id]
 
@@ -93,8 +93,8 @@ Config.Permissions = {
         ActionType = "REVIVE", -- DO NOT TOUCH
         Label = "Revive",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false,  -- No command available, TPZ_CORE Commands already contains /revive [id]
 
@@ -105,8 +105,8 @@ Config.Permissions = {
         ActionType = "BRING", -- DO NOT TOUCH
         Label = "Bring the player to your location",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false,  -- No command available, TPZ_CORE Commands already contains /tphere [id]
 
@@ -117,8 +117,8 @@ Config.Permissions = {
         ActionType = "GOTO", -- DO NOT TOUCH
         Label = "Go to (Teleport) the player's location",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
         
         Command = false, -- No command available, TPZ_CORE Commands already contains /tpto [id]
 
@@ -131,8 +131,8 @@ Config.Permissions = {
         
         Suggestion = "Execute this command to spectate the selected player.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'spectate',
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
@@ -146,8 +146,8 @@ Config.Permissions = {
 
         Suggestion = "Execute this command to freeze or unfreeze the selected player.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'freeze',
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
@@ -159,8 +159,8 @@ Config.Permissions = {
         ActionType = "KILL", -- DO NOT TOUCH
         Label = "Kill (Slay)",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /kill [id]
 
@@ -173,8 +173,8 @@ Config.Permissions = {
 
         Suggestion = "Execute this command to kick the selected player from the server.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'kick',
         CommandHelpTips = { { name = "Id", help = 'Player ID' }, { name = "Reason", help = 'Explain the reason for kicking the specified player.' } },
@@ -189,11 +189,12 @@ Config.Permissions = {
 
         Suggestion = "Execute this command to ban the selected player from the server.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'ban',
         CommandHelpTips = { { name = "Id", help = 'Player ID' }, { name = "Duration", help = "The duration of the ban in HOURS (-1 = PERMANENTLY)" }, { name = "Reason", help = 'Explain the reason for banning the specified player.' } },
+
 
         RequiredParameters = true, -- DO NOT TOUCH
     },
@@ -205,8 +206,8 @@ Config.Permissions = {
         Suggestion = "Execute this command to warn the selected player.",
         HelpTip    = "Explain the reason for warning the specified player.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'warn',
         CommandHelpTips = { { name = "Id", help = 'Player ID' }, { name = "Reason", help = 'Explain the reason for warning the specified player.' } },
@@ -220,8 +221,8 @@ Config.Permissions = {
 
         Suggestion = "Execute this command to reset all the warnings from the selected player.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'resetwarnings',
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
@@ -234,8 +235,8 @@ Config.Permissions = {
         ActionType = 'SET_JOB', -- DO NOT TOUCH
         Label = "Set current job",
         
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /setjob [id] [job] [grade]
     
@@ -246,8 +247,8 @@ Config.Permissions = {
         ActionType = 'SET_JOB_GRADE', -- DO NOT TOUCH
         Label = "Set current job grade",
         
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /setjob [id] [job] [grade]
     
@@ -259,8 +260,8 @@ Config.Permissions = {
         ActionType = 'SET_GROUP', -- DO NOT TOUCH
         Label = "Set group",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /setgroup [id] [group]
    
@@ -271,8 +272,8 @@ Config.Permissions = {
         ActionType = 'ADD_ACCOUNT', -- DO NOT TOUCH
         Label = "Add account money (currency type)",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /addaccount [id] [type] [quantity]
    
@@ -284,8 +285,8 @@ Config.Permissions = {
         ActionType = 'REMOVE_ACCOUNT', -- DO NOT TOUCH
         Label = "Remove account money (currency type)",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available
    
@@ -297,8 +298,8 @@ Config.Permissions = {
         ActionType = 'GIVE_ITEM_AND_WEAPONS', -- DO NOT TOUCH
         Label = "Give the desired item quantity or a weapon.",
         
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /additem [id] [item] [quantity]
     
@@ -311,8 +312,8 @@ Config.Permissions = {
 
         Suggestion = "Execute this to enable or disable GOD MODE.",
         
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command =  'godmode',
     
@@ -326,8 +327,8 @@ Config.Permissions = {
         
         Suggestion = "Execute this command to enable or disable player blips on the map.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command =  "playerblips",
 
@@ -340,8 +341,8 @@ Config.Permissions = {
 
         Suggestion = "Execute this command to announce anything to all online players.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'announce',
         CommandHelpTips = { { name = "Announcement", help = 'Announcement' } },
@@ -353,8 +354,8 @@ Config.Permissions = {
         ActionType = 'TELEPORT_COORDS', -- DO NOT TOUCH
         Label = "Teleport to the selected coords {x,y,z}",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = false, -- No command available, TPZ_CORE Commands already contains /tpcoords [x] [y] [z]
         RequiredParameters = true, -- DO NOT TOUCH
@@ -366,8 +367,8 @@ Config.Permissions = {
 
         Suggestion = "Execute this command to heal all the available online players.",
 
-        PermittedDiscordRoles  = { 670899926783361024, 709868210366840835 },
-        PermittedDiscordGroups = { 'admin' },
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
 
         Command = 'healall',
         RequiredParameters = false, -- DO NOT TOUCH
