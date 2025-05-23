@@ -43,7 +43,12 @@ RegisterServerEvent('tpz_admin:requestUserRoles')
 AddEventHandler('tpz_admin:requestUserRoles', function()
 	local _source = source
 
-	local xPlayer   = TPZ.GetPlayer(source)
+	local xPlayer = TPZ.GetPlayer(_source)
+
+	if not xPlayer.loaded() then
+		return
+	end
+
 	local userRoles = xPlayer.getDiscordRoles()
 
 	TriggerClientEvent("tpz_core:updateUserRoles", _source, { userRoles })
