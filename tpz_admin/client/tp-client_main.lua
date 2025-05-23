@@ -3,6 +3,7 @@ local TPZ = exports.tpz_core:getCoreAPI()
 local PlayerData = { 
     UserRoles = nil,
     UserGroup = nil,
+
     Loaded    = false
 }
 
@@ -92,8 +93,8 @@ end
 -----------------------------------------------------------
 
 -- Updates the player data when the player is loaded.
-RegisterNetEvent("tpz_core:updateUserRoles")
-AddEventHandler("tpz_core:updateUserRoles", function(data)
+RegisterNetEvent("tpz_admin:receive")
+AddEventHandler("tpz_admin:receive", function(data)
     PlayerData.UserRoles  = data[1]
     PlayerData.UserGroup  = data[2]
     
