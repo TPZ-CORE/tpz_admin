@@ -14,8 +14,8 @@
 
 ## Commands 
 
--- @param source : The source is considered as the online Player ID.
--- @param reason : Requires the reason when kicking, banning or warning the selected player.
+- @param source : The source is considered as the online Player ID.
+- @param reason : Requires the reason when kicking, banning or warning the selected player.
 
 | Command                  | Ace Permission                     | Description                                                              |
 |--------------------------|------------------------------------|--------------------------------------------------------------------------|
@@ -42,9 +42,9 @@ The specified export below is used on the `server` to use the API properly and f
 local AdminAPI = exports.tpz_admin:getAPI()
 ```
 
--- @param source          : The source is considered as the online Player ID.
--- @param reason          : Requires the reason when kicking, banning or warning the selected player.
--- @param steamIdentifier : Requires a player steam hex (steam.00a0000aa0000a0)
+- @param source          : The source is considered as the online Player ID.
+- @param reason          : Requires the reason when kicking, banning or warning the selected player.
+- @param steamIdentifier : Requires a player steam hex (steam.00a0000aa0000a0)
 
 | Export                                                                    | Description                                                 | Returned Type |
 |---------------------------------------------------------------------------|-------------------------------------------------------------|---------------|
