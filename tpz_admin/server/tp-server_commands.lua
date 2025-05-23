@@ -117,9 +117,9 @@ Citizen.CreateThread(function()
                 return
               end
   
-              local reason = table.concat(args, " ", 2)
+              local reasonConcat = table.concat(args, " ", 2)
 
-              DropPlayer(target, reason)
+              DropPlayer(target, reasonConcat)
               SendNotification(_source, Locales['KICKED_SELECTED_PLAYER'], "success")
 
             elseif command.ActionType == 'BAN' then
