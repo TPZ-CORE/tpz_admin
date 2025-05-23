@@ -19,4 +19,10 @@ client_scripts {
     'client/*.lua'
 }
 
+dependencies {
+    'tpz_core',
+    'tpz_characters',
+    'tpz_inventory',
+}
+
 lua54 'yes'
