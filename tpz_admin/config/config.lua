@@ -193,7 +193,7 @@ Config.Permissions = {
         PermittedDiscordGroups = { 'admin' },
 
         Command = 'ban',
-        CommandHelpTips = { { name = "Id", help = 'Player ID' }, { name = "Reason", help = 'Explain the reason for banning the specified player.' }, { name = "Duration", help = "The duration of the ban in hours (-1 = PERMANENTLY)" },
+        CommandHelpTips = { { name = "Id", help = 'Player ID' }, { name = "Reason", help = 'Explain the reason for banning the specified player.' }, { name = "Duration", help = "The duration of the ban in hours (-1 = PERMANENTLY)" }, },
 
         RequiredParameters = true, -- DO NOT TOUCH
     },
