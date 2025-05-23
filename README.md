@@ -31,3 +31,7 @@
 | playerblips              | tpzcore.admin.god_mode             | Execute this command to enable or disable player blips on the map.       |
 | announce                 | tpzcore.admin.announcement         | Execute this command to announce anything to all online players.         |
 | healall                  | tpzcore.admin.heal_all             | Execute this command to heal all the available online players.           |
+
+## Information
+
+- You all have seen the UI that is in progress, at the moment the UI management has not been released, it is under development.
