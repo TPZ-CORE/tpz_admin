@@ -28,7 +28,7 @@
 | warn [source] [reason]   | tpzcore.admin.warn                 | Execute this command to warn the selected player from the server.        |
 | resetwarnings [source]   | tpzcore.admin.reset_warnings       | Execute this command to reset all the warnings from the selected player. |
 | godmode                  | tpzcore.admin.god_mode             | Execute this to enable or disable GOD MODE.                              |
-| playerblips              | tpzcore.admin.god_mode             | Execute this command to enable or disable player blips on the map.       |
+| playerblips              | tpzcore.admin.player_blips         | Execute this command to enable or disable player blips on the map.       |
 | announce                 | tpzcore.admin.announcement         | Execute this command to announce anything to all online players.         |
 | healall                  | tpzcore.admin.heal_all             | Execute this command to heal all the available online players.           |
 
