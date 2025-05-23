@@ -123,19 +123,18 @@ Citizen.CreateThread(function()
               SendNotification(_source, Locales['KICKED_SELECTED_PLAYER'], "success")
 
             elseif command.ActionType == 'BAN' then
-
-              local reason, duration = args[2], args[3]
+									
+              local duration, reason = args[2], args[3]
 
               if reason == nil or reason == '' or duration == nil or duration == '' or duration == 0 or tonumber(duration) == nil then
                 SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
                 return
               end
 
-              local reason = table.concat(args, " ", 2)
+              local reason = table.concat(args, " ", 3)
+              duration     = tonumber(duration)
 
-              duration = tonumber(duration)
-
-              tPlayer.ban(reason, (duration * 60) ) -- DURATION IN HOURS ( Input: 5, Calculate: 5 * 60 = 300 Minutes, which is 5 hours).
+              tPlayer.ban(reason, ( duration * 60 ) ) -- HOURS
               SendNotification(_source, Locales['BANNED_SELECTED_PLAYER'], "success")
               
             elseif command.ActionType == 'WARN' then
