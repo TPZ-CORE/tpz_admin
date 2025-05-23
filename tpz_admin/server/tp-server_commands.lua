@@ -131,10 +131,12 @@ Citizen.CreateThread(function()
                 return
               end
 
-              local reason = table.concat(args, " ", 3)
-              duration     = tonumber(duration)
+              local reasonConcat = table.concat(args, " ", 3)
+              duration = tonumber(duration)
 
-              tPlayer.ban(reason, ( duration * 60 ) ) -- HOURS
+              local reasonDisplay = string.format(Locales['BAN_REASON_DESCRIPTION'], reasonConcat) -- permanent
+              tPlayer.ban(reasonDisplay, ( duration * 60 ) ) -- HOURS
+
               SendNotification(_source, Locales['BANNED_SELECTED_PLAYER'], "success")
               
             elseif command.ActionType == 'WARN' then
