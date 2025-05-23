@@ -13,7 +13,7 @@ RegisterCommand(Config.AdminMenu.Command, function(source, args, rawCommand)
   local hasAdministratorPermissions = hasAcePermissions
 
   if not hasAcePermissions then
-      hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.AdminMenu.PermittedDiscordGroups, Config.AdminMenu.PermittedDiscordRoles)
+      hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.AdminMenu.PermittedGroups, Config.AdminMenu.PermittedDiscordRoles)
   end
 
   if hasAcePermissions or hasAdministratorPermissions then
@@ -34,7 +34,7 @@ RegisterCommand(Config.Noclip.Command, function(source, args, rawCommand)
   local hasAdministratorPermissions = hasAcePermissions
 
   if not hasAcePermissions then
-      hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.Noclip.PermittedDiscordGroups, Config.Noclip.PermittedDiscordRoles)
+      hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.Noclip.PermittedGroups, Config.Noclip.PermittedDiscordRoles)
   end
 
   if hasAcePermissions or hasAdministratorPermissions then
@@ -63,7 +63,7 @@ Citizen.CreateThread(function()
         local hasAdministratorPermissions = hasAcePermissions
       
         if not hasAcePermissions then
-            hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(command.PermittedDiscordGroups, command.PermittedDiscordRoles)
+            hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(command.PermittedGroups, command.PermittedDiscordRoles)
         end
       
         if hasAcePermissions or hasAdministratorPermissions then
@@ -123,7 +123,7 @@ Citizen.CreateThread(function()
               SendNotification(_source, Locales['KICKED_SELECTED_PLAYER'], "success")
 
             elseif command.ActionType == 'BAN' then
-									
+
               local duration, reason = args[2], args[3]
 
               if reason == nil or reason == '' or duration == nil or duration == '' or duration == 0 or tonumber(duration) == nil then
@@ -147,9 +147,9 @@ Citizen.CreateThread(function()
                 SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
                 return
               end
-									
+
               local reasonConcat = table.concat(args, " ", 2)
-									
+
               local isBanned = tPlayer.addWarning()
 
               Wait(1000) -- mandatory wait.
