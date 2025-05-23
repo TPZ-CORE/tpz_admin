@@ -32,6 +32,8 @@
 | announce                 | tpzcore.admin.announcement         | Execute this command to announce anything to all online players.         |
 | healall                  | tpzcore.admin.heal_all             | Execute this command to heal all the available online players.           |
 
+- The ace permission: `tpzcore.all` Gives permissioms to all commands and actions (FOR ALL OFFICIAL PUBLISHED FREE SCRIPTS).
+- The ace permission: `tpzcore.admin.all` Gives permissions to all administrator actions ONLY for this script.
 
 ## Development API
 
