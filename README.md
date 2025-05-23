@@ -51,6 +51,7 @@ local AdminAPI = exports.tpz_admin:getAPI()
 | `AdminAPI.banPlayerBySource(source, reason)`                              | To ban the selected player from the server permanently.     | N/A           |
 | `AdminAPI.banPlayerBySteamIdentifier(steamIdentifier, reason)`            | To ban the selected player from the server permanently.     | N/A           |
 | `AdminAPI.resetBanBySteamIdentifier(steamIdentifier)`                     | To remove the ban from the selected player.                 | N/A           |
+| `AdminAPI.addPlayerWarning(source, reason)`                               | To add a warning on the selected player.                    | Boolean       |
 
 ## Information
 
