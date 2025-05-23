@@ -34,4 +34,4 @@
 
 ## Information
 
-- You all have seen the UI that is in progress, at the moment the UI management has not been released, it is under development.
+- You all have seen the UI that is in progress, at the moment the UI management has not been released, it is under development, including the webhooks and history records to be saved.
