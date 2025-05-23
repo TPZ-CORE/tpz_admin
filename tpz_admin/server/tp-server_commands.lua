@@ -135,7 +135,7 @@ Citizen.CreateThread(function()
 
               duration = tonumber(duration)
 
-              tPlayer.ban(reason, duration)
+              tPlayer.ban(reason, (duration * 60) ) -- DURATION IN HOURS ( Input: 5, Calculate: 5 * 60 = 300 Minutes, which is 5 hours).
               SendNotification(_source, Locales['BANNED_SELECTED_PLAYER'], "success")
               
             elseif command.ActionType == 'WARN' then
