@@ -22,11 +22,8 @@ exports('getAPI', function()
 		ResetBanBySteamIdentifier(steamIdentifier)
 	end
 
-	self.getSteamIdentifierBySource = function(source)
-		return GetSteamID(source)
+	self.AddPlayerWarning = function(source, reason)
+		AddPlayerWarning(source, reason)
 	end
-
-
-
 
 end)
