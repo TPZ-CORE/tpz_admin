@@ -29,13 +29,3 @@ GetIdentity = function(source, identity)
         return string.sub(ident, 9)
     end
 end
-
-GetTableLength = function(T)
-    local count = 0
-    for _ in pairs(T) do count = count + 1 end
-    return count
-end
-  
-function StartsWith(String,Start)
-	return string.sub(String,1,string.len(Start))==Start
-end
