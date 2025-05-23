@@ -9,7 +9,7 @@ RegisterCommand(Config.AdminMenu.Command, function(source, args, rawCommand)
   local _source = source
 	local xPlayer = TPZ.GetPlayer(source)
 
-  local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin.menu")
+  local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin.menu") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
   local hasAdministratorPermissions = hasAcePermissions
 
   if not hasAcePermissions then
@@ -30,7 +30,7 @@ RegisterCommand(Config.Noclip.Command, function(source, args, rawCommand)
   local _source = source
   local xPlayer = TPZ.GetPlayer(source)
 
-  local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin.noclip")
+  local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin.noclip") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
   local hasAdministratorPermissions = hasAcePermissions
 
   if not hasAcePermissions then
@@ -59,7 +59,7 @@ Citizen.CreateThread(function()
         local _source = source
         local xPlayer = TPZ.GetPlayer(source)
   
-        local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin." .. string.lower(command.ActionType))
+        local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin." .. string.lower(command.ActionType)) or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
         local hasAdministratorPermissions = hasAcePermissions
       
         if not hasAcePermissions then
