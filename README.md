@@ -32,6 +32,26 @@
 | announce                 | tpzcore.admin.announcement         | Execute this command to announce anything to all online players.         |
 | healall                  | tpzcore.admin.heal_all             | Execute this command to heal all the available online players.           |
 
+
+## Development API
+
+**Getter**
+The specified export below is used on the `server` to use the API properly and faster.
+
+```lua
+local AdminAPI = exports.tpz_admin:getAPI()
+```
+
+-- @param source          : The source is considered as the online Player ID.
+-- @param reason          : Requires the reason when kicking, banning or warning the selected player.
+-- @param steamIdentifier : Requires a player steam hex (steam.00a0000aa0000a0)
+
+| Export                                                                    | Description                                                 | Returned Type |
+|---------------------------------------------------------------------------|-------------------------------------------------------------|---------------|
+| `AdminAPI.banPlayerBySource(source, reason)`                              | To ban the selected player from the server permanently.     | N/A           |
+| `AdminAPI.banPlayerBySteamIdentifier(steamIdentifier, reason)`            | To ban the selected player from the server permanently.     | N/A           |
+| `AdminAPI.resetBanBySteamIdentifier(steamIdentifier)`                     | To remove the ban from the selected player.                 | N/A           |
+
 ## Information
 
 - You all have seen the UI that is in progress, at the moment the UI management has not been released, it is under development, including the webhooks and history records to be saved.
