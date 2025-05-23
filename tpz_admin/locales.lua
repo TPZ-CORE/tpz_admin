@@ -65,9 +65,7 @@ Locales = {
     ['BANNED_SELECTED_PLAYER']                          = "You have succesffully banned the selected player.",
     ['BANNED_SELECTED_PLAYER_REACHED_WARNINGS']         = "The selected player has been banned from the server by reaching the maximum warnings.",
     ['BAN_REASON_REACHED_MAXIMUM_WARNINGS_DESCRIPTION'] = "You have reached maximum server warnings.",
-    ['BAN_REASON_DESCRIPTION']                          = "You have been permanently banned for the following reason: %s\nDuration Left: Banned Permanently.",
-    ['BAN_REASON_DURATION_DESCRIPTION']                 = "You have been permanently banned for the following reason: %s\nDuration Left: %s",
-    
+    ['BAN_REASON_DESCRIPTION']                          = "You have been banned for the following reason: %s.",
 
     ['ADDED_ITEM_ON_SELECTED_PLAYER']                   = "You succesffully gave X%s %s.",
     ['ADDED_WEAPON_ON_SELECTED_PLAYER']                 = "You succesffully gave X1 %s.",
