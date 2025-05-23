@@ -126,7 +126,7 @@ Citizen.CreateThread(function()
 
               local reason, duration = args[2], args[3]
 
-              if (reason == nil or reason == '') or (duration == nil or duration = '' or duration == 0 or tonumber(duration) == nil ) then
+              if reason == nil or reason == '' or duration == nil or duration == '' or duration == 0 or tonumber(duration) == nil then
                 SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
                 return
               end
