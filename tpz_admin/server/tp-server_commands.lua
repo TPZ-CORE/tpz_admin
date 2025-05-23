@@ -138,22 +138,10 @@ Citizen.CreateThread(function()
               
             elseif command.ActionType == 'WARN' then
 
-              PlayersList[target].warnings = PlayersList[target].warnings + 1
+              local isBanned = AddPlayerWarning(target, reason)
 
-              local WarnParameters = { ['identifier'] = tPlayer.getIdentifier(), ['warnings'] = PlayersList[target].warnings }
-              exports.ghmattimysql:execute("UPDATE `banned_users` SET `warnings` = @warnings WHERE `identifier` = @identifier", WarnParameters )
-
-              -- display returned value (reason of warning)
-              local actionText = string.format(Locales['WARN_ACTION_DESCRIPTION'], targetSteamName, returnedValue)
-
-              if PlayersList[target].warnings >= Config.MaxPlayerWarnings then
-                
-                print("The following player: " .. targetSteamName .. " with the identifier: " .. tPlayer.getIdentifier() .. " has been permanently banned by reaching the maximum warnings.")
-          
-                BanPlayerBySource(target, Locales['BAN_REASON_REACHED_MAXIMUM_WARNINGS_DESCRIPTION'])
-
+              if isBanned then
                 SendNotification(_source, Locales['BANNED_SELECTED_PLAYER_REACHED_WARNINGS'], "success")
-
               else
                 SendNotification(_source, Locales['WARNING_SENT'], "success")
               end
