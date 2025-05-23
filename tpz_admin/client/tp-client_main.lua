@@ -77,13 +77,13 @@ end
 
 -- Requests the player data when the player is loaded.
 AddEventHandler("tpz_core:isPlayerReady", function()
-    TriggerServerEvent('tpz_admin:requestUserRoles')
+    TriggerServerEvent('tpz_admin:server:request')
 end)
 
 if Config.DevMode then
 
     Citizen.CreateThread(function ()
-        TriggerServerEvent('tpz_admin:requestUserRoles')
+        TriggerServerEvent('tpz_admin:server:request')
     end)
 
 end
@@ -93,8 +93,8 @@ end
 -----------------------------------------------------------
 
 -- Updates the player data when the player is loaded.
-RegisterNetEvent("tpz_admin:receive")
-AddEventHandler("tpz_admin:receive", function(data)
+RegisterNetEvent("tpz_admin:client:receive")
+AddEventHandler("tpz_admin:client:receive", function(data)
     PlayerData.UserRoles  = data[1]
     PlayerData.UserGroup  = data[2]
     
