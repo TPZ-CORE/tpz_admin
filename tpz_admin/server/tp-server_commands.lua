@@ -131,7 +131,7 @@ Citizen.CreateThread(function()
               duration = tonumber(duration)
 
               local reasonDisplay = string.format(Locales['BAN_REASON_DESCRIPTION'], reasonConcat) -- permanent
-              tPlayer.ban(reasonConcat, ( duration * 60 ) ) -- HOURS
+              tPlayer.ban(reasonConcat, ( duration * 60 * 60 ) ) -- HOURS
 
               SendNotification(_source, Locales['BANNED_SELECTED_PLAYER'], "success")
               
