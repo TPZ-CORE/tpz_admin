@@ -52,8 +52,7 @@ Locales = {
     ['BROUGHT_SELECTED_PLAYER']                         = "You have succesffully brought the selected player to your location.",
     ['GOTO_SELECTED_PLAYER']                            = "You have been teleported to the selected player location.",
     ['KILLED_SELECTED_PLAYER']                          = "You have succesffully killed (slayed) the selected player.",
-    ['FREEZE_TRUE']                                     = "The selected player is now frozen.",
-    ['FREEZE_FALSE']                                    = "The selected player is no longer frozen.",
+    ['FREEZE_UNFREEZE']                                 = "Changed selected player freeze state.",
     
     ['WARNING_SENT']                                    = "A warning has been succesffully sent to the selected player.",
     ['WARNINGS_RESET']                                  = "You have successfully reset all the warnings from the selected player.",
