@@ -93,8 +93,6 @@ Citizen.CreateThread(function()
               return
             end
 
-            local PlayersList = GetPlayerList()
-
             if command.ActionType == 'SPECTATE' then
 
               local targetCoords = GetEntityCoords(GetPlayerPed(target))
@@ -102,11 +100,9 @@ Citizen.CreateThread(function()
         
             elseif command.ActionType == 'FREEZE' then
 
-              PlayersList[target].isFrozen = not PlayersList[target].isFrozen
+              TriggerClientEvent("tpz_admin:freezePlayer", target)
 
-              TriggerClientEvent("tpz_admin:freezePlayer", target, PlayersList[target].isFrozen)
-
-              SendNotification(_source, Locales['FREEZE_' .. string.upper(tostring(PlayersList[target].isFrozen))], "info")
+              SendNotification(_source, Locales['FREEZE_UNFREEZE'], "success")
 
             elseif command.ActionType == 'KICK' then
             
