@@ -13,8 +13,8 @@ end
 --[[ Events ]]--
 -----------------------------------------------------------
 
-RegisterServerEvent('tpz_admin:requestUserRoles')
-AddEventHandler('tpz_admin:requestUserRoles', function()
+RegisterServerEvent('tpz_admin:server:request')
+AddEventHandler('tpz_admin:server:request', function()
 	local _source = source
 	local xPlayer = TPZ.GetPlayer(_source)
 
@@ -25,5 +25,5 @@ AddEventHandler('tpz_admin:requestUserRoles', function()
 	local group     = xPlayer.getGroup()
 	local userRoles = xPlayer.getDiscordRoles()
 
-	TriggerClientEvent("tpz_admin:receive", _source, { userRoles, group })
+	TriggerClientEvent("tpz_admin:client:receive", _source, { userRoles, group })
 end)
