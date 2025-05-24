@@ -10,7 +10,7 @@ local ActionData = {
     HasActiveBlips       = false,
     PlayerBlips          = {},
 
-    HasFreezeState        = false,
+    HasFreezeState       = false,
 
     HasGodMode           = false,
 }
