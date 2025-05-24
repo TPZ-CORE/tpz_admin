@@ -10,6 +10,8 @@ local ActionData = {
     HasActiveBlips       = false,
     PlayerBlips          = {},
 
+    HasFreezeState        = false,
+
     HasGodMode           = false,
 }
 
@@ -124,7 +126,9 @@ end)
 RegisterNetEvent("tpz_admin:freezePlayer")
 AddEventHandler("tpz_admin:freezePlayer", function(state)
     local player = PlayerPedId()
-    FreezeEntityPosition(player, state)
+    ActionData.HasFreezeState = not ActionData.HasFreezeState
+
+    FreezeEntityPosition(player, ActionData.HasFreezeState)
 end)
 
 RegisterNetEvent("tpz_admin:setPlayerBlipsVisibility")
