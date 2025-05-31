@@ -110,5 +110,5 @@ Locales = {
 
     ['HEALED_ALL_PLAYERS']                              = "All online players have been healed.",
     ['TARGET_HEALED']                                   = "You have been healed.",
-    
+    ["DEVTOOLS_NUI_TRIGGERED"]                          = "You attempted to use DevTools! Dont try that again!",
 }
