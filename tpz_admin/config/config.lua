@@ -380,10 +380,19 @@ Config.Permissions = {
 --[[ Discord Webhooking ]]--
 ---------------------------------------------------------------
 
-Config.DiscordWebhooking = {
-    Enable = false, 
-    Url = "", 
-    Color = 10038562,
+Config.Webhooks = {
+
+    ["DEVTOOLS"] = {
+        Enabled = false, 
+        Url = "", 
+        Color = 10038562,
+    },
+
+    ["COMMANDS"] = {
+        Enabled = false, 
+        Url = "", 
+        Color = 10038562,
+    },
 }
 
 -----------------------------------------------------------
