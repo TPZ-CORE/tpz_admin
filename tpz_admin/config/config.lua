@@ -21,6 +21,11 @@ Config.ServerPlayers = 48
 -- be instantly banned by the system.
 Config.MaxPlayerWarnings = 4
 
+Config.DevTools = { -- ace permission: tpzcore.admin.devtools or tpzcore.admin.all
+    PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+    PermittedGroups = { 'admin' },
+}
+
 Config.AdminMenu = {
 
     Command = 'admin',
@@ -69,6 +74,8 @@ Config.Noclip = {
     },
 
 }
+
+
 
 ---------------------------------------------------------------
 --[[ Commands ]]--
