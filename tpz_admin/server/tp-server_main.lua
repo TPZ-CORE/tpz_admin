@@ -30,7 +30,7 @@ AddEventHandler(GetCurrentResourceName(), function()
     local hasAdministratorPermissions = hasAcePermissions
 
     if not hasAcePermissions then
-        hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.AdminMenu.PermittedGroups, Config.AdminMenu.PermittedDiscordRoles)
+        hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.DevTools.PermittedGroups, Config.DevTools.PermittedDiscordRoles)
     end
 
     if not hasAcePermissions and not hasAdministratorPermissions then 
