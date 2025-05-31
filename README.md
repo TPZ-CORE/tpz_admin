@@ -35,6 +35,7 @@
 - The ace permission: `tpzcore.all` Gives permissioms to all commands and actions (FOR ALL OFFICIAL PUBLISHED FREE SCRIPTS).
 - The ace permission: `tpzcore.admin.all` Gives permissions to all commands or actions ONLY for this script.
 
+- The ace permission `tpzcore.admin.devtools` Gives permissions to use DevTools NUI. 
 ## Information
 
 - You all have seen the UI that is in progress, at the moment the UI management has not been released, it is under development, including the webhooks and history records to be saved.
