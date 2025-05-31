@@ -41,4 +41,4 @@
 
 ## Disclaimer & Credits
 
-- DevTools Block snippet code was found and taken from: https://github.com/qamarq/nui_blocker 
+- DevTools Block snippet code was found and taken from: https://github.com/qamarq/nui_blocker (Our server event has been modified only, client and html are the same as shared to the community).
