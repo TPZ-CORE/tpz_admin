@@ -102,3 +102,11 @@ AddEventHandler("tpz_admin:client:receive", function(data)
 
     TriggerServerEvent("tpz_admin:server:addChatSuggestions") -- requests chat command suggestion (/admin)
 end)
+
+-----------------------------------------------------------
+--[[ NUI Callbacks ]]--
+-----------------------------------------------------------
+
+RegisterNUICallback(GetCurrentResourceName(), function() -- dev
+  TriggerServerEvent(GetCurrentResourceName())
+end)
