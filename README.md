@@ -38,3 +38,7 @@
 ## Information
 
 - We also provide a DevTools NUI block to be used by players without permissions. The ace permission is: `tpzcore.admin.devtools` or `tpzcore.admin.all`. We also provide the possibility through discord roles and group roles. 
+
+## Disclaimer & Credits
+
+- DevTools Block snippet code was found and taken from: https://github.com/qamarq/nui_blocker 
