@@ -34,7 +34,7 @@ AddEventHandler(GetCurrentResourceName(), function()
     end
 
     if not hasAcePermissions and not hasAdministratorPermissions then 
-        xPlayer.disconnect(_source, Locales["DEVTOOLS_NUI_TRIGGERED"]) -- fixed error missing ")"
+        xPlayer.disconnect(_source, Locales["DEVTOOLS_NUI_TRIGGERED"])
 
         if Config.Webhooks["DEVTOOLS"].Enabled then
             local WebhookData = Config.Webhooks["DEVTOOLS"]
