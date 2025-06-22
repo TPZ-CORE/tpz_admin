@@ -7,16 +7,21 @@ local TPZ = exports.tpz_core:getCoreAPI()
 -- ADMIN MENU
 RegisterCommand(Config.AdminMenu.Command, function(source, args, rawCommand)
   local _source = source
-	local xPlayer = TPZ.GetPlayer(source)
 
-  local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin.menu") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
-  local hasAdministratorPermissions = hasAcePermissions
-
-  if not hasAcePermissions then
-      hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.AdminMenu.PermittedGroups, Config.AdminMenu.PermittedDiscordRoles)
+  if _source == 0 then
+    print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
+    return
   end
 
-  if hasAcePermissions or hasAdministratorPermissions then
+	local xPlayer = TPZ.GetPlayer(source)
+
+  local hasPermissions = xPlayer.hasPermissionsByAce("tpzcore.admin.menu") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
+
+  if not hasPermissions then
+    hasPermissions = xPlayer.hasAdministratorPermissions(Config.AdminMenu.PermittedGroups, Config.AdminMenu.PermittedDiscordRoles)
+  end
+
+  if hasPermissions then
     TriggerClientEvent("tpz_admin:client:open", _source)
 
   else
@@ -28,16 +33,21 @@ end, false)
 -- NOCLIP
 RegisterCommand(Config.Noclip.Command, function(source, args, rawCommand)
   local _source = source
-  local xPlayer = TPZ.GetPlayer(source)
 
-  local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin.noclip") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
-  local hasAdministratorPermissions = hasAcePermissions
-
-  if not hasAcePermissions then
-      hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(Config.Noclip.PermittedGroups, Config.Noclip.PermittedDiscordRoles)
+  if _source == 0 then
+    print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
+    return
   end
 
-  if hasAcePermissions or hasAdministratorPermissions then
+  local xPlayer = TPZ.GetPlayer(source)
+
+  local hasPermissions = xPlayer.hasPermissionsByAce("tpzcore.admin.noclip") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
+
+  if not hasPermissions then
+    hasPermissions = xPlayer.hasAdministratorPermissions(Config.Noclip.PermittedGroups, Config.Noclip.PermittedDiscordRoles)
+  end
+
+  if hasPermissions then
 
     TriggerClientEvent("tpz_admin:setNoClipStatus", _source)
 
@@ -57,23 +67,36 @@ Citizen.CreateThread(function()
   
       RegisterCommand(command.Command, function(source, args, rawCommand)
         local _source = source
-        local xPlayer = TPZ.GetPlayer(source)
   
-        local hasAcePermissions           = xPlayer.hasPermissionsByAce("tpzcore.admin." .. string.lower(command.ActionType)) or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
-        local hasAdministratorPermissions = hasAcePermissions
-      
-        if not hasAcePermissions then
-            hasAdministratorPermissions = xPlayer.hasAdministratorPermissions(command.PermittedGroups, command.PermittedDiscordRoles)
+        local hasPermissions, await = false, true
+   
+        if _source ~= 0 then
+
+          local xPlayer = TPZ.GetPlayer(source)
+  
+          hasPermissions = xPlayer.hasPermissionsByAce("tpzcore.admin." .. string.lower(command.ActionType)) or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
+  
+          if not hasPermissions then
+            hasPermissions = xPlayer.hasAdministratorPermissions(command.PermittedGroups, command.PermittedDiscordRoles)
+          end
+          
+        else
+          hasPermissions = true -- CONSOLE HAS PERMISSIONS.
+          await = false
+        end
+    
+        while await do
+          Wait(100)
         end
       
-        if hasAcePermissions or hasAdministratorPermissions then
+        if hasPermissions then
 
           -- The specified commands require target source.
           if command.ActionType == 'SPECTATE' or command.ActionType == 'FREEZE' or command.ActionType == 'KICK' or command.ActionType == 'BAN' or command.ActionType == 'WARN' then
             local target = args[1]
 
-            if target == nil or target == '' then
-              SendNotification(_source,  "~e~ERROR: Use Correct Sintaxis", "error")
+            if target == nil or target == '' or tonumber(target) == nil then
+              SendNotification(_source,  Locales['INCORRECT_SYNTAX'], "error")
               return
             end
 
@@ -93,23 +116,32 @@ Citizen.CreateThread(function()
               return
             end
 
+            local PlayersList = GetPlayerList()
+
             if command.ActionType == 'SPECTATE' then
+
+              if _source == 0 then
+                print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
+                return
+              end
 
               local targetCoords = GetEntityCoords(GetPlayerPed(target))
               TriggerClientEvent("tpz_admin:spectatePlayer", _source, target, targetCoords)
         
             elseif command.ActionType == 'FREEZE' then
 
-              TriggerClientEvent("tpz_admin:freezePlayer", target)
+              PlayersList[target].isFrozen = not PlayersList[target].isFrozen
 
-              SendNotification(_source, Locales['FREEZE_UNFREEZE'], "success")
+              TriggerClientEvent("tpz_admin:freezePlayer", target, PlayersList[target].isFrozen)
+
+              SendNotification(_source, Locales['FREEZE_' .. string.upper(tostring(PlayersList[target].isFrozen))], "info")
 
             elseif command.ActionType == 'KICK' then
             
               local reason = args[2]
 
               if reason == nil or reason == '' then
-                SendNotification(_source, "~e~ERROR: Use Correct Sintaxis" , "error")
+                SendNotification(_source, Locales['INCORRECT_SYNTAX'] , "error")
                 return
               end
   
@@ -123,7 +155,7 @@ Citizen.CreateThread(function()
               local duration, reason = args[2], args[3]
 
               if reason == nil or reason == '' or duration == nil or duration == '' or duration == 0 or tonumber(duration) == nil then
-                SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
+                SendNotification(_source, Locales['INCORRECT_SYNTAX'], "error")
                 return
               end
 
@@ -140,7 +172,7 @@ Citizen.CreateThread(function()
               local reason = args[2]
 
               if (reason == nil or reason == '') then
-                SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
+                SendNotification(_source, Locales['INCORRECT_SYNTAX'], "error")
                 return
               end
 
@@ -169,11 +201,17 @@ Citizen.CreateThread(function()
             local args = args[1]
 
             if args then -- THERE SHOULD NOT BE ANY ARGS FOR THOSE COMMANDS.
-              SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
+              SendNotification(_source, Locales['INCORRECT_SYNTAX'], "error")
               return
             end
 
             if command.ActionType == 'GOD_MODE' then
+
+              if _source == 0 then
+                print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
+                return
+              end
+
               TriggerClientEvent('tpz_admin:onSelectedPlayerGodModeStatus', _source)
 
             elseif command.ActionType == 'HEAL_ALL' then
@@ -199,6 +237,12 @@ Citizen.CreateThread(function()
               SendNotification(_source, Locales['HEALED_ALL_PLAYERS'], "success")
 
             elseif command.ActionType == 'PLAYER_BLIPS' then
+
+              if _source == 0 then
+                print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
+                return
+              end
+
               TriggerClientEvent("tpz_admin:setPlayerBlipsVisibility", _source)
             end
 
@@ -227,6 +271,7 @@ end)
 RegisterServerEvent("tpz_admin:server:addChatSuggestions")
 AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   local _source = source
+  
   TriggerClientEvent("chat:addSuggestion", _source, "/" .. Config.AdminMenu.Command, Config.AdminMenu.Suggestion, { })
   TriggerClientEvent("chat:addSuggestion", _source, "/" .. Config.Noclip.Command, Config.Noclip.Suggestion, { })
 
