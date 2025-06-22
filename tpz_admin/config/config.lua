@@ -410,10 +410,15 @@ Config.Webhooks = {
 -- @param messageType returns "success" or "error" depends when and where the message is sent.
 function SendNotification(source, message, messageType)
 
-    if not source then
+    if source == nil then -- CLIENT SIDE
         TriggerEvent('tpz_core:sendBottomTipNotification', message, 3000)
-    else
+
+    elseif source == 0 then  -- CONSOLE - NO DURATION SUPPORT OR TYPE.
+        print(message:gsub("~e~", '^1') .. '^0')
+        
+    elseif source and source ~= 0 then -- PLAYER OBJECT
         TriggerClientEvent('tpz_core:sendBottomTipNotification', source, message, 3000)
     end
   
 end
+
