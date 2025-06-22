@@ -17,20 +17,19 @@
 - `@param source` : The source is considered as the online Player ID.
 - `@param reason` : Requires the reason when kicking, banning or warning the selected player.
 
-| Command                  | Ace Permission                     | Description                                                              |
-|--------------------------|------------------------------------|--------------------------------------------------------------------------|
-| menu                     | tpzcore.admin.menu                 | Execute this command to open the Admin Menu.                             |
-| noclip                   | tpzcore.admin.noclip               | Execute this command for noclip.                                         |
-| spectate [source]        | tpzcore.admin.spectate             | Execute this command to spectate the selected player.                    |
-| freeze [source]          | tpzcore.admin.freeze               | Execute this command to freeze or unfreeze the selected player.          |
-| kick [source] [reason]   | tpzcore.admin.kick                 | Execute this command to kick the selected player from the server.        |
-| ban [source] [reason]    | tpzcore.admin.ban                  | Execute this command to ban the selected player from the server.         |
-| warn [source] [reason]   | tpzcore.admin.warn                 | Execute this command to warn the selected player from the server.        |
-| resetwarnings [source]   | tpzcore.admin.reset_warnings       | Execute this command to reset all the warnings from the selected player. |
-| godmode                  | tpzcore.admin.god_mode             | Execute this to enable or disable GOD MODE.                              |
-| playerblips              | tpzcore.admin.player_blips         | Execute this command to enable or disable player blips on the map.       |
-| announce                 | tpzcore.admin.announcement         | Execute this command to announce anything to all online players.         |
-| healall                  | tpzcore.admin.heal_all             | Execute this command to heal all the available online players.           |
+| Command                  | Ace Permission                     | Description                                                              | Console / TXAdmin Console Support |
+|--------------------------|------------------------------------|--------------------------------------------------------------------------|-----------------------------------|
+| noclip                   | tpzcore.admin.noclip               | Execute this command for noclip.                                         | No |
+| spectate [source]        | tpzcore.admin.spectate             | Execute this command to spectate the selected player.                    | No |
+| freeze [source]          | tpzcore.admin.freeze               | Execute this command to freeze or unfreeze the selected player.          | Yes |
+| kick [source] [reason]   | tpzcore.admin.kick                 | Execute this command to kick the selected player from the server.        | Yes |
+| ban [source] [reason]    | tpzcore.admin.ban                  | Execute this command to ban the selected player from the server.         | Yes |
+| warn [source] [reason]   | tpzcore.admin.warn                 | Execute this command to warn the selected player from the server.        | Yes |
+| resetwarnings [source]   | tpzcore.admin.reset_warnings       | Execute this command to reset all the warnings from the selected player. | Yes |
+| godmode                  | tpzcore.admin.god_mode             | Execute this to enable or disable GOD MODE.                              | No |
+| playerblips              | tpzcore.admin.player_blips         | Execute this command to enable or disable player blips on the map.       | No |
+| announce                 | tpzcore.admin.announcement         | Execute this command to announce anything to all online players.         | Yes |
+| healall                  | tpzcore.admin.heal_all             | Execute this command to heal all the available online players.           | Yes |
 
 - The ace permission: `tpzcore.all` Gives permissioms to all commands and actions (FOR ALL OFFICIAL PUBLISHED FREE SCRIPTS).
 - The ace permission: `tpzcore.admin.all` Gives permissions to all commands or actions ONLY for this script.
