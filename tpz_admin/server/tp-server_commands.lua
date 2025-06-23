@@ -1,5 +1,23 @@
 local TPZ = exports.tpz_core:getCoreAPI()
 
+
+-----------------------------------------------------------
+--[[ Local Functions ]]--
+-----------------------------------------------------------
+
+local function GetPlayerData(source)
+
+  local xPlayer = TPZ.GetPlayer(source)
+
+  return {
+    identifier     = xPlayer.getIdentifier(),
+    charIdentifier = xPlayer.getCharacterIdentifier(),
+    group          = xPlayer.getGroup(),
+    steamName      = GetPlayerName(source),
+  }
+
+end
+
 -----------------------------------------------------------
 --[[ Command Registrations ]]--
 -----------------------------------------------------------
@@ -33,13 +51,21 @@ end, false)
 -- NOCLIP
 RegisterCommand(Config.Noclip.Command, function(source, args, rawCommand)
   local _source = source
+  local xPlayer = TPZ.GetPlayer(source)
 
   if _source == 0 then
     print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
     return
   end
 
-  local xPlayer = TPZ.GetPlayer(source)
+  if not xPlayer.loaded() then -- in case player executes the command from character selection.
+    return
+  end
+
+  local identifier     = xPlayer.getIdentifier()
+  local charIdentifier = xPlayer.getCharacterIdentifier()
+  local group          = xPlayer.getGroup()
+  local steamName      = GetPlayerName(_source)
 
   local hasPermissions = xPlayer.hasPermissionsByAce("tpzcore.admin.noclip") or xPlayer.hasPermissionsByAce("tpzcore.admin.all")
 
@@ -48,11 +74,20 @@ RegisterCommand(Config.Noclip.Command, function(source, args, rawCommand)
   end
 
   if hasPermissions then
-
     TriggerClientEvent("tpz_admin:setNoClipStatus", _source)
 
   else
     SendNotification(_source, Locales['NOT_PERMITTED'], "error")
+  end
+
+  local webhookData = Config.Noclip.Webhooks
+
+  if webhookData.Enabled then
+
+    local title   = "📋` /" .. Config.Noclip.Command .. "`"
+    local message = "**Steam name:** `" .. steamName .. " (" .. group .. ")`\n**Identifier:** `" .. identifier .. "`\n**Character Identifier:** `" .. charIdentifier .. "`\n**Action:** `Used No Clip Command`"
+
+    TPZ.SendToDiscord(webhookData.Url, title, message, webhookData.Color)
   end
 
 end, false)
@@ -79,6 +114,8 @@ Citizen.CreateThread(function()
           if not hasPermissions then
             hasPermissions = xPlayer.hasAdministratorPermissions(command.PermittedGroups, command.PermittedDiscordRoles)
           end
+
+          await = false
           
         else
           hasPermissions = true -- CONSOLE HAS PERMISSIONS.
@@ -90,6 +127,8 @@ Citizen.CreateThread(function()
         end
       
         if hasPermissions then
+
+          local webhookTitle
 
           -- The specified commands require target source.
           if command.ActionType == 'SPECTATE' or command.ActionType == 'FREEZE' or command.ActionType == 'KICK' or command.ActionType == 'BAN' or command.ActionType == 'WARN' then
@@ -127,7 +166,9 @@ Citizen.CreateThread(function()
 
               local targetCoords = GetEntityCoords(GetPlayerPed(target))
               TriggerClientEvent("tpz_admin:spectatePlayer", _source, target, targetCoords)
-        
+
+              webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. "`"
+
             elseif command.ActionType == 'FREEZE' then
 
               PlayersList[target].isFrozen = not PlayersList[target].isFrozen
@@ -135,6 +176,8 @@ Citizen.CreateThread(function()
               TriggerClientEvent("tpz_admin:freezePlayer", target, PlayersList[target].isFrozen)
 
               SendNotification(_source, Locales['FREEZE_' .. string.upper(tostring(PlayersList[target].isFrozen))], "info")
+
+              webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. "`"
 
             elseif command.ActionType == 'KICK' then
             
@@ -149,6 +192,8 @@ Citizen.CreateThread(function()
 
               DropPlayer(target, reasonConcat)
               SendNotification(_source, Locales['KICKED_SELECTED_PLAYER'], "success")
+
+              webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. ' ' .. reasonConcat .. "`"
 
             elseif command.ActionType == 'BAN' then
 
@@ -166,7 +211,9 @@ Citizen.CreateThread(function()
               tPlayer.ban(reasonConcat, ( duration * 60 * 60 ) ) -- HOURS
 
               SendNotification(_source, Locales['BANNED_SELECTED_PLAYER'], "success")
-              
+
+              webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. ' ' .. reasonConcat .. ' ' .. duration .. "`"
+
             elseif command.ActionType == 'WARN' then
 
               local reason = args[2]
@@ -189,10 +236,14 @@ Citizen.CreateThread(function()
                 SendNotification(_source, Locales['WARNING_SENT'], "success")
               end
 
+              webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. ' ' .. reasonConcat .. "`"
+
             elseif command.ActionType == 'RESET_WARNINGS' then
 
               tPlayer.clearPlayerWarnings()
               SendNotification(_source, Locales['WARNINGS_RESET'], "success")
+
+              webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. "`"
 
             end
 
@@ -213,6 +264,8 @@ Citizen.CreateThread(function()
               end
 
               TriggerClientEvent('tpz_admin:onSelectedPlayerGodModeStatus', _source)
+
+              webhookTitle   = "📋` /" .. command.Command .. "`"
 
             elseif command.ActionType == 'HEAL_ALL' then
 
@@ -236,6 +289,8 @@ Citizen.CreateThread(function()
 
               SendNotification(_source, Locales['HEALED_ALL_PLAYERS'], "success")
 
+              webhookTitle   = "📋` /" .. command.Command .. "`"
+
             elseif command.ActionType == 'PLAYER_BLIPS' then
 
               if _source == 0 then
@@ -246,9 +301,23 @@ Citizen.CreateThread(function()
               TriggerClientEvent("tpz_admin:setPlayerBlipsVisibility", _source)
             end
 
+            webhookTitle   = "📋` /" .. command.Command .. "`"
 
           elseif command.ActionType == 'ANNOUNCEMENT' then
             -- todo
+
+          end
+
+          if Config.Webhooks.Enabled then
+
+            local message = 'The specified command has been executed from the console (txadmin?).'
+
+            if _source ~= 0 then
+              local PlayerData = GetPlayerData(_source)
+              message = string.format("**Steam name:** `%s (%s)`\n**Identifier:** `%s`\n**Character Identifier:** `%s`\n**Action:** `Used %s Command Type`", PlayerData.steamName, PlayerData.group, PlayerData.identifier, PlayerData.charIdentifier, command.ActionType)
+            end
+
+            TPZ.SendToDiscord(Config.Webhooks.Url, webhookTitle, message, Config.Webhooks.Color)
           end
 
         else
