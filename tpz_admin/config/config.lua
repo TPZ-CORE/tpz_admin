@@ -73,6 +73,11 @@ Config.Noclip = {
         ['H'] = 1,    -- Rotation movement speed multiplier.
     },
 
+    Webhooks = { -- IT CAN BE SPAMMABLE IF YOU ARE OR YOUR TEAM USING IT FREQUENTLY.
+        Enabled = false, 
+        Url = "", 
+        Color = 10038562,
+    },
 }
 
 
@@ -387,19 +392,10 @@ Config.Permissions = {
 --[[ Discord Webhooking ]]--
 ---------------------------------------------------------------
 
-Config.Webhooks = {
-
-    ["DEVTOOLS"] = {
-        Enabled = false, 
-        Url = "", 
-        Color = 10038562,
-    },
-
-    ["COMMANDS"] = {
-        Enabled = false, 
-        Url = "", 
-        Color = 10038562,
-    },
+Config.Webhooks = { -- FOR ALL COMMANDS EXCEPT NOCLIP (IT HAS ITS OWN OPTION FOR WEBHOOK)
+    Enabled = false, 
+    Url = "", 
+    Color = 10038562,
 }
 
 -----------------------------------------------------------
