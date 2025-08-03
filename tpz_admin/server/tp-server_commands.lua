@@ -304,8 +304,17 @@ Citizen.CreateThread(function()
             webhookTitle   = "📋` /" .. command.Command .. "`"
 
           elseif command.ActionType == 'ANNOUNCEMENT' then
-            -- todo
+            local duration, announcement = args[1], args[2]
 
+            if announcement == nil or announcement == '' or duration == nil or duration == '' or duration == 0 or tonumber(duration) == nil then
+              SendNotification(_source, Locales['INCORRECT_SYNTAX'], "error")
+              return
+            end
+
+            local announcementConcat = table.concat(args, " ", 2)
+            duration = tonumber(duration)
+
+            TriggerClientEvent('tpz_core:sendAnnouncement', -1, Locales['SERVER_ANNOUNCEMENT'], announcementConcat, duration * 1000)
           end
 
           if Config.Webhooks.Enabled then
@@ -360,3 +369,4 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
