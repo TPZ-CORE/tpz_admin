@@ -113,4 +113,7 @@ Locales = {
     ["DEVTOOLS_NUI_TRIGGERED"]                          = "You attempted to use DevTools! Dont try that again!",
     ['INCORRECT_SYNTAX']                                = "~e~ERROR: Use Correct Sintaxis",
     ['COMMAND_NOT_PERMITTED_ON_CONSOLE']                = '^1This command is not permitted to be used on console.^0',
+    ['SERVER_ANNOUNCEMENT']                             = "SERVER ANNOUNCEMENT",
+
 }
+
