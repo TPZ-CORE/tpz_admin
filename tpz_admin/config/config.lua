@@ -357,8 +357,8 @@ Config.Permissions = {
         PermittedGroups = { 'admin' },
 
         Command = 'announce',
-        CommandHelpTips = { { name = "Announcement", help = 'Announcement' }, { name = "Duration", help = 'The duration time to stay as displayed in seconds.' } },
-
+        CommandHelpTips = { { name = "Duration", help = 'Duration in seconds' }, { name = "Announcement", help = 'Announcement' }  },
+        
         RequiredParameters = true, -- DO NOT TOUCH
     },
 
@@ -417,5 +417,6 @@ function SendNotification(source, message, messageType)
     end
   
 end
+
 
 
