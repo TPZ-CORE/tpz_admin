@@ -24,6 +24,7 @@
 | freeze [source]          | tpzcore.admin.freeze               | Execute this command to freeze or unfreeze the selected player.          | Yes |
 | kick [source] [reason]   | tpzcore.admin.kick                 | Execute this command to kick the selected player from the server.        | Yes |
 | ban [source] [reason]    | tpzcore.admin.ban                  | Execute this command to ban the selected player from the server.         | Yes |
+| unban [steamHex]         | tpzcore.admin.unban                | Execute this command to unban the selected user from the server.         | Yes |
 | warn [source] [reason]   | tpzcore.admin.warn                 | Execute this command to warn the selected player from the server.        | Yes |
 | resetwarnings [source]   | tpzcore.admin.reset_warnings       | Execute this command to reset all the warnings from the selected player. | Yes |
 | godmode                  | tpzcore.admin.god_mode             | Execute this to enable or disable GOD MODE.                              | No |
