@@ -221,7 +221,7 @@ Config.Permissions = {
         PermittedGroups = { 'admin' },
 
         Command = 'unban',
-        CommandHelpTips = { { { name = "Steam Hex", help = "The user steam hex id.)" } },
+        CommandHelpTips = { { name = "Steam Hex", help = "The user steam hex id." } },
 
         RequiredParameters = true, -- DO NOT TOUCH
     },
