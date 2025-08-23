@@ -324,8 +324,8 @@ Citizen.CreateThread(function()
               return
             end
 
-            
-
+            TPZ.ResetBanBySteamIdentifier(targetSteamHex)
+            SendNotification(_source, string.format(Locales['UNBANNED_SELECTED_PLAYER'], targetSteamHex), "success")
           end
 
           if Config.Webhooks.Enabled then
