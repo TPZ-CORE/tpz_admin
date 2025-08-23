@@ -315,6 +315,17 @@ Citizen.CreateThread(function()
             duration = tonumber(duration)
 
             TriggerClientEvent('tpz_core:sendAnnouncement', -1, Locales['SERVER_ANNOUNCEMENT'], announcementConcat, duration * 1000)
+
+          elseif command.ActionType == "UNBAN" then
+            local targetSteamHex = args[1]
+
+            if targetSteamHex == nil or targetSteamHex == '' then
+              SendNotification(_source, Locales['INCORRECT_SYNTAX'], "error")
+              return
+            end
+
+            
+
           end
 
           if Config.Webhooks.Enabled then
