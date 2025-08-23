@@ -195,7 +195,7 @@ Config.Permissions = {
     },
 
 
-    { -- The following permissions are also the same to unban a player (user).
+    { 
         ActionType = "BAN", -- DO NOT TOUCH
         Label = "Ban the selected player and describe the reason",
 
@@ -207,6 +207,21 @@ Config.Permissions = {
         Command = 'ban',
         CommandHelpTips = { { name = "Id", help = 'Player ID' }, { name = "Duration", help = "The duration of the ban in HOURS (-1 = PERMANENTLY)" }, { name = "Reason", help = 'Explain the reason for banning the specified player.' } },
 
+
+        RequiredParameters = true, -- DO NOT TOUCH
+    },
+
+    { 
+        ActionType = "UNBAN", -- DO NOT TOUCH
+        Label = "Unban the selected user by the steam hex.",
+
+        Suggestion = "Execute this command to unban the selected user from the server.",
+
+        PermittedDiscordRoles  = { 11111111111111111, 222222222222222222 },
+        PermittedGroups = { 'admin' },
+
+        Command = 'unban',
+        CommandHelpTips = { { { name = "Steam Hex", help = "The user steam hex id.)" } },
 
         RequiredParameters = true, -- DO NOT TOUCH
     },
