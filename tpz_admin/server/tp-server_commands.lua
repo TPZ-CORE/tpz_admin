@@ -328,7 +328,7 @@ Citizen.CreateThread(function()
             SendNotification(_source, string.format(Locales['UNBANNED_SELECTED_PLAYER'], targetSteamHex), "success")
           end
 
-          if Config.Webhooks.Enabled then
+          if Config.Webhooks['COMMANDS'].Enabled then
 
             local message = 'The specified command has been executed from the console (txadmin?).'
 
@@ -336,8 +336,8 @@ Citizen.CreateThread(function()
               local PlayerData = GetPlayerData(_source)
               message = string.format("**Steam name:** `%s (%s)`\n**Identifier:** `%s`\n**Character Identifier:** `%s`\n**Action:** `Used %s Command Type`", PlayerData.steamName, PlayerData.group, PlayerData.identifier, PlayerData.charIdentifier, command.ActionType)
             end
-
-            TPZ.SendToDiscord(Config.Webhooks.Url, webhookTitle, message, Config.Webhooks.Color)
+            
+            TPZ.SendToDiscord(Config.Webhooks['COMMANDS'].Url, webhookTitle, message, Config.Webhooks['COMMANDS'].Color)
           end
 
         else
@@ -380,4 +380,5 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
 
