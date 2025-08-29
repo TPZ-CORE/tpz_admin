@@ -407,10 +407,21 @@ Config.Permissions = {
 --[[ Discord Webhooking ]]--
 ---------------------------------------------------------------
 
-Config.Webhooks = { -- FOR ALL COMMANDS EXCEPT NOCLIP (IT HAS ITS OWN OPTION FOR WEBHOOK)
-    Enabled = false, 
-    Url = "", 
-    Color = 10038562,
+Config.Webhooks = {
+
+    ['COMMANDS'] = {
+        
+        Enabled = false, 
+        Url     =  "",
+        Color   = 10038562,
+
+    },
+
+    ['DEVTOOLS'] = {
+        Enabled = false, 
+        Url     = "",
+        Color   = 10038562,
+    },
 }
 
 -----------------------------------------------------------
@@ -432,6 +443,7 @@ function SendNotification(source, message, messageType)
     end
   
 end
+
 
 
 
