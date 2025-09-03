@@ -1,6 +1,16 @@
 
 local TPZ = exports.tpz_core:getCoreAPI()
 
+local Players = {}
+
+-----------------------------------------------------------
+--[[ Functions ]]--
+-----------------------------------------------------------
+
+GetPlayerList = function()
+    return Players
+end
+
 -----------------------------------------------------------
 --[[ Events ]]--
 -----------------------------------------------------------
@@ -48,3 +58,4 @@ AddEventHandler(GetCurrentResourceName(), function()
     end
     
 end)
+
