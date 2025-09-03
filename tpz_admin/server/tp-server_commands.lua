@@ -155,8 +155,6 @@ Citizen.CreateThread(function()
               return
             end
 
-            local PlayersList = GetPlayerList()
-
             if command.ActionType == 'SPECTATE' then
 
               if _source == 0 then
@@ -171,11 +169,7 @@ Citizen.CreateThread(function()
 
             elseif command.ActionType == 'FREEZE' then
 
-              PlayersList[target].isFrozen = not PlayersList[target].isFrozen
-
-              TriggerClientEvent("tpz_admin:freezePlayer", target, PlayersList[target].isFrozen)
-
-              SendNotification(_source, Locales['FREEZE_' .. string.upper(tostring(PlayersList[target].isFrozen))], "info")
+              TriggerClientEvent("tpz_admin:freezePlayer", target)
 
               webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. "`"
 
@@ -380,5 +374,6 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
 
 
