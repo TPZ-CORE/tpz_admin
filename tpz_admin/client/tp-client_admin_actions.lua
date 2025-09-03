@@ -165,15 +165,12 @@ AddEventHandler("tpz_admin:setPlayerBlipsVisibility", function()
 
                     for _, player in pairs (result) do
             
-                        local targetPed = GetPlayerPed(tonumber(player.source))
-                        local coords    = GetEntityCoords(targetPed)
-                
-                        local BlipHandle = N_0x554d9d53f696d002(1664425300, coords.x, coords.y, coords.z)
+                        local BlipHandle = N_0x554d9d53f696d002(1664425300, player.coords.x, player.coords.y, player.coords.z)
                 
                         SetBlipSprite(BlipHandle, -1350763423, 1)
                         SetBlipScale(BlipHandle, 0.2)
                         Citizen.InvokeNative(0x9CB1A1623062F402, BlipHandle, player.steamname .. " (" .. player.username .. ")")
-                
+                        
                         ActionData.PlayerBlips[player.source] = BlipHandle
                     end
             
@@ -341,4 +338,5 @@ Citizen.CreateThread(function()
 
     end
 end)
+
 
