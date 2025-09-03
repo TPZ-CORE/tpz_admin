@@ -171,6 +171,8 @@ Citizen.CreateThread(function()
 
               TriggerClientEvent("tpz_admin:freezePlayer", target)
 
+              SendNotification(_source, Locales['FREEZE_UNFREEZE'], "info")
+
               webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. "`"
 
             elseif command.ActionType == 'KICK' then
@@ -374,6 +376,7 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
 
 
 
