@@ -6,6 +6,7 @@ local TPZInv = exports.tpz_inventory:getInventoryAPI()
 --[[ Callbacks  ]]--
 -----------------------------------------------------------
 
+
 exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getOnlinePlayers", function(source, cb, data)
 
 	local playersList   = TPZ.GetPlayers()
@@ -28,12 +29,16 @@ exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getOnlinePlayers", funct
 			totalWarnings = PlayerList[target].warnings
 		end
 
+		local coords = GetEntityCoords(GetPlayerPed(target))
+
 		if data.requestAll then
 
 			table.insert(newPlayerList, { 
 				source    = target, 
 				username  = username, 
 				steamname = steamname,
+
+				coords    = { x = coords.x, y = coords.y, z = coords.z },
 
 				accounts = { 
 					money       = xPlayer.getAccount(0), 
@@ -45,7 +50,8 @@ exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getOnlinePlayers", funct
 			})
 
 		else
-			table.insert(newPlayerList, { source = target, username = username, steamname = steamname })
+
+			table.insert(newPlayerList, { source = target, username = username, steamname = steamname, coords = { x = coords.x, y = coords.y, z = coords.z } })
 		end
 
 		Wait(0.1)
@@ -62,8 +68,6 @@ exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getOnlinePlayers", funct
 
 	return cb(newPlayerList)
 end)
-
-
 
 exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getBannedPlayers", function(source, cb)
 
