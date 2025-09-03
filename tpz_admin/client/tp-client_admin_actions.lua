@@ -70,8 +70,6 @@ AddEventHandler("tpz_admin:spectatePlayer", function(target, targetCoords)
 
         if ActionData.IsSpectating then
 
-            CloseNUIProperly()
-
             DoScreenFadeOut(2000)
 
             repeat Wait(0) until not IsScreenFadingOut()
@@ -107,7 +105,7 @@ AddEventHandler("tpz_admin:spectatePlayer", function(target, targetCoords)
     SetEntityCoords(player, targetCoords.x + 15, targetCoords.y + 15, targetCoords.z, false, false, false, false)
    
     Wait(500)
-    targetPed = GetPlayersClient(target)
+    targetPed = GetPlayerPed(target)
    
     Wait(500)
 
@@ -343,3 +341,4 @@ Citizen.CreateThread(function()
 
     end
 end)
+
