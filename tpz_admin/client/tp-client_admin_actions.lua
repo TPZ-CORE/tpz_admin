@@ -44,7 +44,11 @@ AddEventHandler("tpz_admin:setNoClipStatus", function()
 
     ActionData.HasNoClip = not ActionData.HasNoClip
 
-    if not ActionData.HasNoClip then
+    if ActionData.HasNoClip then
+
+        TriggerEvent("tpz_admin:client:noclip_tasks")
+
+    elseif not ActionData.HasNoClip then
         
         ResetEntityAlpha(player)
         if (player ~= PlayerPedId()) then
@@ -122,11 +126,10 @@ AddEventHandler("tpz_admin:spectatePlayer", function(target, targetCoords)
 end)
 
 RegisterNetEvent("tpz_admin:freezePlayer")
-AddEventHandler("tpz_admin:freezePlayer", function(state)
-    local player = PlayerPedId()
+AddEventHandler("tpz_admin:freezePlayer", function()
     ActionData.HasFreezeState = not ActionData.HasFreezeState
 
-    FreezeEntityPosition(player, ActionData.HasFreezeState)
+    FreezeEntityPosition(PlayerPedId(), ActionData.HasFreezeState)
 end)
 
 RegisterNetEvent("tpz_admin:setPlayerBlipsVisibility")
@@ -170,7 +173,7 @@ AddEventHandler("tpz_admin:setPlayerBlipsVisibility", function()
                         SetBlipSprite(BlipHandle, -1350763423, 1)
                         SetBlipScale(BlipHandle, 0.2)
                         Citizen.InvokeNative(0x9CB1A1623062F402, BlipHandle, player.steamname .. " (" .. player.username .. ")")
-                        
+
                         ActionData.PlayerBlips[player.source] = BlipHandle
                     end
             
@@ -236,24 +239,25 @@ end)
 --[[ Threads ]]--
 -----------------------------------------------------------
 
-Citizen.CreateThread(function()
+Citizen.CreateThread(function() RegisterNoClipPromptActions() end)
 
-    RegisterNoClipPromptActions()
+AddEventHandler("tpz_admin:client:noclip_tasks", function()
 
-    local FollowCamMode = true
+    Citizen.CreateThread(function()
 
-    while true do
+        local FollowCamMode = true
+    
+        while true do
 
-        Wait(0)
+            Wait(1)
 
-        local player = PlayerPedId()
-        local sleep  = true
+            local player     = PlayerPedId()
+            local PlayerData = GetPlayerData()
 
-		local PlayerData = GetPlayerData()
-
-        if PlayerData.Loaded and ActionData.HasNoClip then
-            sleep = false
-
+            if not ActionData.HasNoClip then
+                break
+            end
+    
             local NoClipData        = Config.Noclip
             local CurrentSpeed      = NoClipData.Speeds[ActionData.NoClipSpeed].speed
             local CurrentSpeedLabel = NoClipData.Speeds[ActionData.NoClipSpeed].label
@@ -332,11 +336,6 @@ Citizen.CreateThread(function()
 
         end
 
-        if sleep then
-            Wait(1000)
-        end
+    end)
 
-    end
 end)
-
-
