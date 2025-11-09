@@ -162,8 +162,7 @@ Citizen.CreateThread(function()
                 return
               end
 
-              local targetCoords = GetEntityCoords(GetPlayerPed(target))
-              TriggerClientEvent("tpz_admin:spectatePlayer", _source, target, targetCoords)
+              TriggerClientEvent("tpz_admin:spectatePlayer", _source, target)
 
               webhookTitle   = "📋` /" .. command.Command .. ' ' .. target .. "`"
 
@@ -322,6 +321,9 @@ Citizen.CreateThread(function()
 
             TPZ.ResetBanBySteamIdentifier(targetSteamHex)
             SendNotification(_source, string.format(Locales['UNBANNED_SELECTED_PLAYER'], targetSteamHex), "success")
+
+          elseif command.ActionType == 'SPECTATE_CANCEL' then 
+            TriggerClientEvent("tpz_admin:spectatePlayer", _source, nil)
           end
 
           if Config.Webhooks['COMMANDS'].Enabled then
@@ -376,6 +378,7 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
 
 
 
