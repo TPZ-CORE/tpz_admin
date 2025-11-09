@@ -151,7 +151,21 @@ Config.Permissions = {
 
         RequiredParameters = false, -- DO NOT TOUCH
     },
+    
+    { 
+        ActionType = "SPECTATE_CANCEL", -- DO NOT TOUCH
+        Label = "Cancel Spectate",
+        
+        Suggestion = "Execute this command to cancel spectating players.",
 
+        PermittedDiscordRoles  = { 670899926783361024, 1174077274153299988, 709868210366840835 },
+        PermittedGroups = { 'admin' },
+
+        Command = 'spectatecancel',
+
+        RequiredParameters = false, -- DO NOT TOUCH
+    },
+    
     { 
         ActionType = "FREEZE", -- DO NOT TOUCH
         Label = "Freeze or unfreeze the selected player",
@@ -443,6 +457,7 @@ function SendNotification(source, message, messageType)
     end
   
 end
+
 
 
 
