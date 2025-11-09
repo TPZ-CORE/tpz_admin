@@ -13,7 +13,9 @@ local ActionData = {
     HasFreezeState       = false,
 
     HasGodMode           = false,
+
 }
+
 
 local Cooldown = false
 
@@ -66,62 +68,94 @@ AddEventHandler("tpz_admin:setNoClipStatus", function()
 end)
 
 RegisterNetEvent("tpz_admin:spectatePlayer")
-AddEventHandler("tpz_admin:spectatePlayer", function(target, targetCoords)
-    local player     = PlayerPedId()
-    local targetPed  = 0
+AddEventHandler("tpz_admin:spectatePlayer", function(target)
+    local player = PlayerPedId()
+    local coords = GetEntityCoords(player)
 
-    if ActionData.IsSpectating or target == 0 or targetCoords == nil then
+    if (target ~= nil) then 
 
-        if ActionData.IsSpectating then
-
+        while not IsScreenFadedOut() do
+            Wait(50)
             DoScreenFadeOut(2000)
+        end
+    
+        ActionData.IsSpectating = true
 
-            repeat Wait(0) until not IsScreenFadingOut()
-    
-            RenderScriptCams(true, false, 1, true, true, 0)
-            DestroyCam(Camera, true)
-            DestroyAllCams(true)
-            SetEntityCoords(player, ActionData.LastSpectatingCoords.x, ActionData.LastSpectatingCoords.y, ActionData.LastSpectatingCoords.z - 1, false, false, false, false)
-            SetEntityVisible(player, true)
-            SetEntityCanBeDamaged(player, false)
-            SetEntityInvincible(player, true)
-            DoScreenFadeIn(2000)
-    
-            repeat Wait(0) until IsScreenFadingIn()
-    
-            ActionData.IsSpectating = false
-            ActionData.LastSpectatingCoords = nil
-
+        if ActionData.LastSpectatingCoords == nil then
+            ActionData.LastSpectatingCoords = { x = coords.x, y = coords.y, z = coords.z, h = GetEntityHeading(player) }
         end
 
-        return
+        local targetId   = GetPlayerFromServerId(target)
+        local targetPed  = GetPlayerPed(targetId)
+        local tcoords    = GetEntityCoords(targetPed)
+
+        SetEntityVisible(player, false)
+
+        exports.tpz_core.getCoreAPI().TeleportToCoords( tcoords.x, tcoords.y, tcoords.z, tcoords.h)
+        SetEntityCollision(player, true, false)
+        DisplayRadar(false)
+
+        Wait(3000)
+        DoScreenFadeIn(2000)
+
+        Citizen.CreateThread(function()
+
+            while ActionData.IsSpectating do 
+
+                Wait(0)
+
+                TaskStandStill(player, -1)
+                SetEntityCanBeDamaged(player, false)
+                SetEntityInvincible(player, true)
+                SetEntityCollision(player, false, false)
+                DisplayRadar(false)
+
+            end
+
+        end)
+        
+         Citizen.CreateThread(function()
+        
+            while ActionData.IsSpectating do 
+                Wait(10)
+                local targetPed = GetPlayerPed(targetId)
+                local tcoords   = GetEntityCoords(targetPed)
+                SetEntityCoords(player, tcoords.x, tcoords.y, tcoords.z, true, true, true, false)
+            end
+        
+        end)
+
+    else 
+
+        if not ActionData.IsSpectating then 
+            return
+        end
+
+        while not IsScreenFadedOut() do
+            Wait(50)
+            DoScreenFadeOut(2000)
+        end    
+
+
+        ActionData.IsSpectating = false
+        Wait(1000)
+        SetEntityCollision(player, true, true)
+        TaskStandStill(player, 1)
+
+        exports.tpz_core.getCoreAPI().TeleportToCoords( ActionData.LastSpectatingCoords.x, ActionData.LastSpectatingCoords.y, ActionData.LastSpectatingCoords.z, ActionData.LastSpectatingCoords.h)
+
+        SetEntityVisible(player, true)
+        SetEntityCanBeDamaged(player, true)
+        SetEntityInvincible(player, false)
+
+        DisplayRadar(true)
+
+        ActionData.LastSpectatingCoords = nil
+
+        Wait(5000)
+        DoScreenFadeIn(2000)
+
     end
-
-    DoScreenFadeOut(2000)
-
-    repeat Wait(0) until not IsScreenFadingOut()
-
-    ActionData.LastSpectatingCoords = GetEntityCoords(player)
-
-    SetEntityVisible(player, false)
-    SetEntityCanBeDamaged(player, false)
-    SetEntityInvincible(player, true)
-    SetEntityCoords(player, targetCoords.x + 15, targetCoords.y + 15, targetCoords.z, false, false, false, false)
-   
-    Wait(500)
-    targetPed = GetPlayerPed(target)
-   
-    Wait(500)
-
-    Camera = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
-    AttachCamToEntity(Camera, targetPed, 0.0, -2.0, 1.0, false)
-    SetCamActive(Camera, true)
-    RenderScriptCams(true, true, 1, true, true, 0)
-    DoScreenFadeIn(2000)
-
-    repeat Wait(0) until IsScreenFadingIn()
-
-    ActionData.IsSpectating = true
 
 end)
 
@@ -339,3 +373,4 @@ AddEventHandler("tpz_admin:client:noclip_tasks", function()
     end)
 
 end)
+
