@@ -323,6 +323,12 @@ Citizen.CreateThread(function()
             SendNotification(_source, string.format(Locales['UNBANNED_SELECTED_PLAYER'], targetSteamHex), "success")
 
           elseif command.ActionType == 'SPECTATE_CANCEL' then 
+            
+            if _source == 0 then
+              print(Locales['COMMAND_NOT_PERMITTED_ON_CONSOLE'])
+              return
+            end
+
             TriggerClientEvent("tpz_admin:spectatePlayer", _source, nil)
           end
 
@@ -378,6 +384,7 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
 
 
 
