@@ -21,6 +21,7 @@
 |--------------------------|------------------------------------|--------------------------------------------------------------------------|-----------------------------------|
 | noclip                   | tpzcore.admin.noclip               | Execute this command for noclip.                                         | No |
 | spectate [source]        | tpzcore.admin.spectate             | Execute this command to spectate the selected player.                    | No |
+| spectatecancel     | tpzcore.admin.spectatecancel             | Execute this command to cancel spectating players.                    | No |
 | freeze [source]          | tpzcore.admin.freeze               | Execute this command to freeze or unfreeze the selected player.          | Yes |
 | kick [source] [reason]   | tpzcore.admin.kick                 | Execute this command to kick the selected player from the server.        | Yes |
 | ban [source] [reason]    | tpzcore.admin.ban                  | Execute this command to ban the selected player from the server.         | Yes |
