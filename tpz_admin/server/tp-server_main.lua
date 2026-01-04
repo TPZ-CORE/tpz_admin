@@ -51,11 +51,12 @@ AddEventHandler(GetCurrentResourceName(), function()
 
             local title       = "DEVTOOLS TRIGGERED"
             local description = string.format("The player [%s] tried to use nui_devtools! The player has been kicked from the server.", steamName)
-
-            TPZ.SendToDiscord(WebhookData.Url, title, description, WebhookData.Color)
+            local url = TPZ.GetWebhookUrl('tpz_admin', 'DEVTOOLS_INJECTION_CHEAT')
+            TPZ.SendToDiscord(url, title, description, WebhookData.Color)
         end
 
     end
     
 end)
+
 
