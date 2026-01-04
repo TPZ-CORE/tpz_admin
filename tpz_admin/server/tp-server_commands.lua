@@ -86,8 +86,8 @@ RegisterCommand(Config.Noclip.Command, function(source, args, rawCommand)
 
     local title   = "📋` /" .. Config.Noclip.Command .. "`"
     local message = "**Steam name:** `" .. steamName .. " (" .. group .. ")`\n**Identifier:** `" .. identifier .. "`\n**Character Identifier:** `" .. charIdentifier .. "`\n**Action:** `Used No Clip Command`"
-
-    TPZ.SendToDiscord(webhookData.Url, title, message, webhookData.Color)
+    local url = TPZ.GetWebhookUrl('tpz_admin', 'COMMANDS')
+    TPZ.SendToDiscord(url, title, message, webhookData.Color)
   end
 
 end, false)
@@ -340,8 +340,9 @@ Citizen.CreateThread(function()
               local PlayerData = GetPlayerData(_source)
               message = string.format("**Steam name:** `%s (%s)`\n**Identifier:** `%s`\n**Character Identifier:** `%s`\n**Action:** `Used %s Command Type`", PlayerData.steamName, PlayerData.group, PlayerData.identifier, PlayerData.charIdentifier, command.ActionType)
             end
-            
-            TPZ.SendToDiscord(Config.Webhooks['COMMANDS'].Url, webhookTitle, message, Config.Webhooks['COMMANDS'].Color)
+								
+            local url = TPZ.GetWebhookUrl('tpz_admin', 'COMMANDS')
+            TPZ.SendToDiscord(url, webhookTitle, message, Config.Webhooks['COMMANDS'].Color)
           end
 
         else
@@ -384,6 +385,7 @@ AddEventHandler("tpz_admin:server:addChatSuggestions", function()
   end
 
 end)
+
 
 
 
