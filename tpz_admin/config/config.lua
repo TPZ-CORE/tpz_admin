@@ -73,9 +73,9 @@ Config.Noclip = {
         ['H'] = 1,    -- Rotation movement speed multiplier.
     },
 
+    -- (!) Checkout tpz_core/server/discord/webhooks.lua to modify the webhook urls.
     Webhooks = { -- IT CAN BE SPAMMABLE IF YOU ARE OR YOUR TEAM USING IT FREQUENTLY.
         Enabled = false, 
-        Url = "", 
         Color = 10038562,
     },
 }
@@ -421,19 +421,18 @@ Config.Permissions = {
 --[[ Discord Webhooking ]]--
 ---------------------------------------------------------------
 
+-- (!) Checkout tpz_core/server/discord/webhooks.lua to modify the webhook urls.
 Config.Webhooks = {
 
     ['COMMANDS'] = {
         
         Enabled = false, 
-        Url     =  "",
         Color   = 10038562,
 
     },
 
     ['DEVTOOLS'] = {
         Enabled = false, 
-        Url     = "",
         Color   = 10038562,
     },
 }
@@ -457,6 +456,7 @@ function SendNotification(source, message, messageType)
     end
   
 end
+
 
 
 
