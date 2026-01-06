@@ -9,6 +9,8 @@ local TPZInv = exports.tpz_inventory:getInventoryAPI()
 
 exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getOnlinePlayers", function(source, cb, data)
 
+	local _source       = source
+	
 	local playersList   = TPZ.GetPlayers()
 	local newPlayerList = {}
 
@@ -18,43 +20,46 @@ exports.tpz_core:getCoreAPI().addNewCallBack("tpz_admin:getOnlinePlayers", funct
 		
 		local target  = tonumber(player.source)
 
-		local xPlayer   = TPZ.GetPlayer(target)
-		local username  = xPlayer.getFirstName() .. ' ' .. xPlayer.getLastName()
-		local steamname = GetPlayerName(target)
+		if target ~= _source then
 
-		local PlayerList    = GetPlayerList()
-		local totalWarnings = 0
+			local xPlayer   = TPZ.GetPlayer(target)
+			local username  = xPlayer.getFirstName() .. ' ' .. xPlayer.getLastName()
+			local steamname = GetPlayerName(target)
+	
+			local PlayerList    = GetPlayerList()
+			local totalWarnings = 0
+	
+			if PlayerList[target] then
+				totalWarnings = PlayerList[target].warnings
+			end
+	
+			local coords = GetEntityCoords(GetPlayerPed(target))
+	
+			if data.requestAll then
+	
+				table.insert(newPlayerList, { 
+					source    = target, 
+					username  = username, 
+					steamname = steamname,
+	
+					coords    = { x = coords.x, y = coords.y, z = coords.z },
+	
+					accounts = { 
+						money       = xPlayer.getAccount(0), 
+						gold        = xPlayer.getAccount(1),
+						black_money = xPlayer.getAccount(2),
+					},
+	
+					warnings = totalWarnings,
+				})
+	
+			else
+	
+				table.insert(newPlayerList, { source = target, username = username, steamname = steamname, coords = { x = coords.x, y = coords.y, z = coords.z } })
+			end
 
-		if PlayerList[target] then
-			totalWarnings = PlayerList[target].warnings
+			Wait(0.1)
 		end
-
-		local coords = GetEntityCoords(GetPlayerPed(target))
-
-		if data.requestAll then
-
-			table.insert(newPlayerList, { 
-				source    = target, 
-				username  = username, 
-				steamname = steamname,
-
-				coords    = { x = coords.x, y = coords.y, z = coords.z },
-
-				accounts = { 
-					money       = xPlayer.getAccount(0), 
-					gold        = xPlayer.getAccount(1),
-					black_money = xPlayer.getAccount(2),
-				},
-
-				warnings = totalWarnings,
-			})
-
-		else
-
-			table.insert(newPlayerList, { source = target, username = username, steamname = steamname, coords = { x = coords.x, y = coords.y, z = coords.z } })
-		end
-
-		Wait(0.1)
 
 		if next(playersList.players, _) == nil then
 			finished = true
