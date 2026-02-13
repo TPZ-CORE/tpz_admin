@@ -1,0 +1,500 @@
+#tickets-section-title-icon,
+#tickets-section-refresh-icon {
+  position: absolute;
+  color: aliceblue;
+  font-size: 1.3vw;
+  left: 37.5%;
+  margin-top: 12%;
+  width: 14%;
+  height: 1vw;
+  text-align: left;
+}
+
+#tickets-section-refresh-icon {
+  font-size: 1.2vw;
+  margin-top: 15%;
+  left: 76.5%;
+  width: 2%;
+}
+
+#tickets-section-refresh-icon:hover {
+  opacity: 0.7;
+}
+
+#tickets-section-search-input {
+  position: absolute;
+  color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.8vw;
+  width: 23vw;
+  height: 1.2vw;
+  margin-top: 15%;
+  left: 37.5%;
+  text-align: left;
+  padding-left: 0.5vw;
+  border: 0.5px solid rgba(255, 255, 255, 0.106);
+  box-shadow: rgba(255, 255, 255, 0.106) 0px 0px 1px;
+  background-color: rgba(8, 8, 8, 0.455);
+}
+
+#tickets-section-search-button {
+  position: absolute;
+  height: 1.1vw;
+  font-size: 0.85vw;
+  color: rgba(223, 223, 223, 0.898);
+  width: 7vw;
+  text-align: center;
+  margin-top: 15%;
+  margin-left: 61%;
+  padding-top: 0.1vw;
+  background-color: rgba(51, 51, 51, 0.2);
+  box-shadow: rgba(255, 255, 255, 0.13) 0px 0px 1px 1px inset;
+  border-radius: 1%;
+}
+
+#tickets-section-search-button:hover {
+  color: aliceblue;
+}
+
+#tickets-section-title,
+#tickets-section-users-list-id-title,
+#tickets-section-users-list-fullname-title,
+#tickets-section-users-list-steamname-title,
+#tickets-section-users-list-date-title,
+#tickets-section-dialog-description,
+#tickets-section-dialog-title,
+#create-ticket-background-title,
+#create-ticket-textarea-title,
+#create-ticket-message-textarea-title,
+#create-ticket-checkbox-title {
+  position: absolute;
+  color: aliceblue;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2vw;
+  margin-left: 40%;
+  margin-top: 11.8%;
+  width: fit-content;
+  height: 1vw;
+  font-weight: 500;
+  text-align: left;
+}
+
+#tickets-section-users-list-id-title,
+#tickets-section-users-list-fullname-title,
+#tickets-section-users-list-steamname-title,
+#tickets-section-users-list-date-title {
+  color: aliceblue;
+  font-size: 0.7vw;
+  background-color: rgba(24, 24, 24, 0.39);
+  box-shadow: rgba(255, 255, 255, 0.13) 0px 0px 1px 1px inset;
+  border-radius: 1%;
+  text-align: center;
+  margin-left: 40%;
+  margin-top: 16.8%;
+  width: 6vw;
+}
+
+#tickets-section-users-list-id-title {
+  margin-left: 39.7%;
+  width: 3vw;
+}
+
+#tickets-section-users-list-steamname-title {
+  margin-left: 43.5%;
+  width: 12vw;
+}
+
+#tickets-section-users-list-fullname-title {
+  margin-left: 56%;
+  width: 14.5vw;
+}
+
+#tickets-section-users-list-date-title {
+  margin-left: 71%;
+  width: 6.5vw;
+}
+
+#tickets-section-users-list {
+  position: absolute;
+  width: 41%;
+  height: 42%;
+  left: 37.5%;
+  margin-top: 18.3%;
+  overflow-y: scroll;
+  border-radius: 1px;
+  opacity: 1;
+  padding-top: 1vw;
+  background-color: rgba(51, 51, 51, 0.2);
+  box-shadow: rgba(255, 255, 255, 0.13) 0px 0px 1px 1px inset;
+}
+
+#tickets-section-users-list-main {
+  position: relative;
+  height: 5vw;
+  width: 99%;
+  margin-left: 1%;
+  background-color: rgba(14, 14, 14, 0.2);
+  box-shadow: rgba(255, 255, 255, 0.13) 0px 0px 1px 1px inset;
+  border-radius: 1%;
+}
+
+#tickets-section-users-list-main:hover {
+  opacity: 0.7;
+}
+
+#tickets-section-users-list-exclamation,
+#tickets-section-users-list-id,
+#tickets-section-users-list-fullname,
+#tickets-section-users-list-steamname,
+#tickets-section-users-list-description-title,
+#tickets-section-users-list-title,
+#tickets-section-users-list-description,
+#tickets-section-users-list-date {
+  position: absolute;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 1.42vw;
+  padding-top: 0.15vw;
+  margin-left: 3.5vw;
+  color: rgba(240, 240, 240, 0.796);
+  font-size: 0.8vw;
+  width: 20.4vw;
+  text-align: center;
+  margin-top: 0.2vw;
+  background-color: rgba(51, 51, 51, 0.2);
+  box-shadow: rgba(255, 255, 255, 0.13) 0px 0px 1px 1px inset;
+  border-radius: 1%;
+}
+
+#tickets-section-users-list-exclamation {
+  color: rgba(255, 0, 0, 0.8);
+
+  font-size: 1vw;
+
+  margin-top: 0.4vw;
+
+  font-size: 0.9vw;
+  left: -7.7%;
+  width: 1vw;
+  height: 1.2vw;
+
+  text-align: center;
+
+  background-color: rgba(51, 51, 51, 0.2);
+  box-shadow: rgba(255, 0, 0, 0.3) 0px 0px 1px 1px inset;
+
+  border-radius: 80%;
+}
+
+#tickets-section-users-list-id {
+  font-size: 0.9vw;
+  margin-left: 4.5%;
+  width: 3vw;
+}
+
+#tickets-section-users-list-steamname {
+  height: 1.32vw;
+  font-size: 0.7vw;
+  margin-left: 14%;
+  width: 12vw;
+  padding-top: 0.25vw;
+}
+
+#tickets-section-users-list-fullname {
+  height: 1.32vw;
+  font-size: 0.7vw;
+  margin-left: 45%;
+  width: 14.5vw;
+  padding-top: 0.25vw;
+}
+
+
+#tickets-section-users-list-date {
+  height: 1.32vw;
+  font-size: 0.7vw;
+  margin-left: 82.5%;
+  width: 6.5vw;
+  padding-top: 0.25vw;
+}
+
+
+#tickets-section-users-list-description-title {
+  margin-top: 2vw;
+  margin-left: 0.6vw;
+
+  background-color: rgba(51, 51, 51, 0.0);
+  box-shadow: rgba(255, 255, 255, 0.0) 0px 0px 1px 1px inset;
+
+  text-align: left;
+  font-size: 0.7vw;
+
+  text-decoration: underline;
+}
+
+#tickets-section-users-list-title {
+  margin-top: 2vw;
+  margin-left: 0.6vw;
+
+  background-color: rgba(51, 51, 51, 0.0);
+  box-shadow: rgba(255, 255, 255, 0.0) 0px 0px 1px 1px inset;
+
+  text-align: right;
+  font-weight: bold;
+  font-size: 0.7vw;
+
+  width: 37vw;
+}
+
+#tickets-section-users-list-description {
+  margin-top: 3.3vw;
+  margin-left: 0.6vw;
+
+  color: gray;
+
+  background-color: rgba(51, 51, 51, 0.0);
+  box-shadow: rgba(255, 255, 255, 0.0) 0px 0px 1px 1px inset;
+
+  text-align: left;
+  font-size: 0.65vw;
+
+  width: 37vw;
+}
+
+
+#tickets-section-users-pages-list {
+  position: absolute;
+  display: inline-block;
+  font-size: 0.7vw;
+  width: fit-content;
+  height: 1vw;
+  left: 37.7%;
+  margin-top: 43.3%;
+}
+
+#tickets-section-users-pages-list-value {
+  position: relative;
+  display: inline-block;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(216, 216, 216);
+  font-size: 0.8vw;
+  font-weight: 750;
+  height: 1vw;
+  width: 1vw;
+  text-align: left;
+}
+
+#tickets-section-users-pages-list-value:hover {
+  color: gray;
+}
+
+#tickets-section-dialog-title {
+  color: #ddc076;
+  font-size: 1vw;
+  margin-top: 19%;
+  margin-left: 46%;
+  width: 23%;
+  text-align: center;
+}
+
+#tickets-section-dialog-description {
+
+  color: rgba(255, 255, 255, 0.815);
+  font-size: 0.7vw;
+  margin-top: 22%;
+  margin-left: 46%;
+  width: 23%;
+  text-align: center;
+
+  height: fit-content;
+  white-space: pre-line;
+}
+
+#tickets-section-dialog-fade-background {
+  position: absolute;
+
+  margin-left: 37%;
+  margin-top: 14%;
+  height: 54.5%;
+  width: 42%;
+
+  background-color: rgba(8, 8, 8, 0.656);
+  border: 0.5px solid rgba(255, 255, 255, 0.105);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.105);
+  border-radius: 1.2%;
+}
+
+#tickets-section-dialog-background {
+  position: absolute;
+
+  margin-left: 45%;
+  margin-top: 18%;
+  height: 24.5%;
+  width: 25%;
+
+  background-color: rgba(8, 8, 8, 0.956);
+  border: 0.5px solid rgba(255, 255, 255, 0.405);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.405);
+  border-radius: 1.2%;
+}
+
+#tickets-section-dialog-delete-button,
+#tickets-section-dialog-cancel-button,
+#create-ticket-send-button {
+  position: absolute;
+
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  color: white;
+  font-size: 0.65vw;
+
+  text-align: center;
+
+  opacity: 0.8;
+
+  height: 1.5vw;
+  width: 6vw;
+
+  border: solid transparent;
+  float: left;
+
+  background-size: 100% 100% !important;
+  background-image: url(../img/button.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+
+  margin-top: 28.5%;
+  margin-left: 47%;
+
+  padding-top: 0.5vw;
+}
+
+#tickets-section-dialog-cancel-button {
+  margin-left: 61.7%;
+}
+
+#tickets-section-dialog-delete-button:hover,
+#tickets-section-dialog-cancel-button:hover,
+#create-ticket-send-button:hover {
+  opacity: 0.6;
+}
+
+
+/* CREATE TICKET SECTION */
+
+#create-ticket-background {
+  position: absolute;
+
+  width: 45%;
+  height: 55%;
+
+  background-color: rgba(14, 14, 14, 0.826);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 0.5px solid rgba(255, 255, 255, 0.405);
+}
+
+#create-ticket-background-title {
+  margin-left: 27.5vw;
+  margin-top: 13.5vw;
+
+  font-size: 1.3vw;
+  text-align: center;
+
+  text-decoration: underline;
+
+  width: 45%;
+}
+
+
+#create-ticket-title-textarea,
+#create-ticket-message-textarea {
+  position: absolute;
+
+  color: white;
+
+  font-size: 0.7vw;
+
+  text-align: left;
+  width: 38.7vw;
+  height: 1.4vw;
+
+  margin-top: 18vw;
+  left: 30.5vw;
+
+  padding-top: 0.3vw;
+  padding-left: 0.5vw;
+
+  letter-spacing: 1.5px;
+  background-color: rgba(10, 10, 10, 0.5);
+  resize: none;
+}
+
+#create-ticket-title-textarea {
+
+  width: 38.7vw;
+  height: 15.9vw;
+
+  margin-top: 23vw;
+  left: 30.5vw;
+
+}
+
+#create-ticket-send-button {
+  margin-top: 39.7vw;
+}
+
+#create-ticket-close-button {
+  position: absolute;
+
+  width: 1vw;
+  height: 1vw;
+
+  font-family: crock, crock, serif;
+
+  color: rgba(255, 0, 0, 0.801);
+
+  font-size: 1vw;
+
+  margin-top: 13.1%;
+  margin-left: 70.5%;
+}
+
+#create-ticket-close-button:hover {
+  color: red;
+}
+
+#create-ticket-textarea-title,
+#create-ticket-message-textarea-title {
+  font-size: 0.8vw;
+  opacity: 0.7;
+  margin-left: 30.5vw;
+}
+
+#create-ticket-textarea-title {
+  margin-top: 16.5vw;
+}
+
+
+#create-ticket-message-textarea-title {
+  margin-top: 21.5vw;
+}
+
+#create-ticket-checkbox-title {
+  font-size: 0.5vw;
+  opacity: 0.7;
+  margin-left: 31.5vw;
+  margin-top: 42.5vw;
+
+  text-align: left;
+
+  width: fit-content;
+}
+
+#create-ticket-checkbox {
+  position: absolute;
+  margin-left: -19.5vw;
+  margin-top: 42.5vw;
+  width: 0.7vw;
+  height: 0.7vw;
+}
