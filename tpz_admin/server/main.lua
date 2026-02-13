@@ -33,7 +33,10 @@ AddEventHandler('onResourceStart', function(resourceName)
         function(result)
             if result and #result > 0 then
                 for _, ticket in ipairs(result) do
-                    --print(("History Action ID %s is older than x days"):format(ticket.id or "N/A"))
+
+                    if Config.Debug then
+                        print(("History Action ID %s is older than x days"):format(ticket.id or "N/A"))
+                    end
                     -- You can delete, process, or flag these tickets here
     
                     -- Delete old actions
@@ -43,7 +46,10 @@ AddEventHandler('onResourceStart', function(resourceName)
                     )
                 end
             else
-                --print("No tickets older than x days.")
+                if Config.Debug then
+                    print("No history actions older than x days.")
+                end
+
             end
         end
     )
@@ -199,4 +205,5 @@ AddEventHandler('tpz_admin:server:unban', function(steamname, identifier)
     TriggerClientEvent("tpz_admin:client:sendNUINotification", _source, string.format(Locales['UNBAN_HISTORY_ACTION_SUCCESS'].text, steamname), "success", Locales['UNBAN_HISTORY_ACTION_SUCCESS'].duration)
 
 end)
+
 
