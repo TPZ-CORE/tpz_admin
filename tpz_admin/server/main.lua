@@ -20,6 +20,34 @@ AddEventHandler('onResourceStart', function(resourceName)
         return
     end
 
+    -- Get current time
+    local currentTime = os.time()
+    local threeDaysSeconds = Config.DeleteHistoryActionAfter * 24 * 60 * 60 -- x days in seconds
+    
+    -- Fetch tickets older than x days
+    exports.ghmattimysql:execute(
+        "SELECT * FROM admin_history WHERE timestamp <= @timeLimit",
+        {
+            ["@timeLimit"] = currentTime - threeDaysSeconds
+        },
+        function(result)
+            if result and #result > 0 then
+                for _, ticket in ipairs(result) do
+                    --print(("Ticket ID %s is older than x days"):format(ticket.id or "N/A"))
+                    -- You can delete, process, or flag these tickets here
+    
+                    -- Delete old actions
+                    exports.ghmattimysql:execute(
+                        "DELETE FROM admin_history WHERE id = @id",
+                        { ["@id"] = ticket.id }
+                    )
+                end
+            else
+                --print("No tickets older than x days.")
+            end
+        end
+    )
+    
 end)
 
 
@@ -169,4 +197,5 @@ AddEventHandler('tpz_admin:server:unban', function(steamname, identifier)
     TriggerClientEvent("tpz_admin:client:reload_bans", _source)
 
     TriggerClientEvent("tpz_admin:client:sendNUINotification", _source, string.format(Locales['UNBAN_HISTORY_ACTION_SUCCESS'].text, steamname), "success", Locales['UNBAN_HISTORY_ACTION_SUCCESS'].duration)
+
 end)
