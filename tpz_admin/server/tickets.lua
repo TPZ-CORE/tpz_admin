@@ -2,7 +2,7 @@
 --[[ Base Events ]]--
 -----------------------------------------------------------
 
--- Removing old tickets on resource start
+-- Removing old history actions on resource start
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() ~= resourceName then
         return
@@ -21,7 +21,11 @@ AddEventHandler('onResourceStart', function(resourceName)
         function(result)
             if result and #result > 0 then
                 for _, ticket in ipairs(result) do
-                    --print(("Ticket ID %s is older than x days"):format(ticket.id or "N/A"))
+
+                    if Config.Debug then
+                        print(("Ticket ID %s is older than x days"):format(ticket.id or "N/A"))
+                    end
+
                     -- You can delete, process, or flag these tickets here
     
                     -- Delete old tickets
@@ -31,7 +35,10 @@ AddEventHandler('onResourceStart', function(resourceName)
                     )
                 end
             else
-                --print("No tickets older than x days.")
+
+                if Config.Debug then
+                    print("No tickets older than x days.")
+                end
             end
         end
     )
@@ -68,4 +75,3 @@ AddEventHandler('tpz_admin:server:deleteTicket', function(timestamp)
     TriggerClientEvent("tpz_admin:client:sendNUINotification", _source, Locales['TICKET_DELETED_SUCCESSFULLY'].text, "success", Locales['TICKET_DELETED_SUCCESSFULLY'].duration)
 
 end)
-
