@@ -1,3 +1,42 @@
+-----------------------------------------------------------
+--[[ Base Events ]]--
+-----------------------------------------------------------
+
+-- Removing old history actions on resource start
+AddEventHandler('onResourceStart', function(resourceName)
+    if GetCurrentResourceName() ~= resourceName then
+        return
+    end
+
+    -- Get current time
+    local currentTime = os.time()
+    local threeDaysSeconds = Config.DeleteTicketAfter * 24 * 60 * 60 -- x days in seconds
+    
+    -- Fetch tickets older than x days
+    exports.ghmattimysql:execute(
+        "SELECT * FROM admin_tickets WHERE timestamp <= @timeLimit",
+        {
+            ["@timeLimit"] = currentTime - threeDaysSeconds
+        },
+        function(result)
+            if result and #result > 0 then
+                for _, ticket in ipairs(result) do
+                    --print(("Ticket ID %s is older than x days"):format(ticket.id or "N/A"))
+                    -- You can delete, process, or flag these tickets here
+    
+                    -- Delete old tickets
+                    exports.ghmattimysql:execute(
+                        "DELETE FROM admin_tickets WHERE id = @id",
+                        { ["@id"] = ticket.id }
+                    )
+                end
+            else
+                --print("No tickets older than x days.")
+            end
+        end
+    )
+    
+end)
 
 -----------------------------------------------------------
 --[[ Events ]]--
