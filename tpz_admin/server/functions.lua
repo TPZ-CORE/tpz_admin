@@ -72,7 +72,7 @@ InsertHistoryAction = function(source, text)
         date       = currentTime,
     }
 
-    exports.ghmattimysql:execute('INSERT INTO admin_history (identifier, steamname, action, date) VALUES (@identifier, @steamname, @action, @date)', {
+    exports.ghmattimysql:execute('INSERT INTO admin_history (identifier, steamname, action, date, timestamp) VALUES (@identifier, @steamname, @action, @date, @timestamp)', {
         ['@identifier'] = data.identifier,
         ['@steamname']  = data.steamname,
         ['@action']     = data.action,
@@ -105,5 +105,6 @@ CreateTicket = function(source, title, message, exclamation)
         exports.tpz_core:getCoreAPI().SendToDiscordWithPlayerParameters(webhook, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, message, WebhookData.Color)
 
     end
+
 
 end
