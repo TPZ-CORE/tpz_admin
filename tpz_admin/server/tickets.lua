@@ -2,7 +2,7 @@
 --[[ Base Events ]]--
 -----------------------------------------------------------
 
--- Removing old history actions on resource start
+-- Removing old tickets on resource start
 AddEventHandler('onResourceStart', function(resourceName)
     if GetCurrentResourceName() ~= resourceName then
         return
@@ -68,3 +68,4 @@ AddEventHandler('tpz_admin:server:deleteTicket', function(timestamp)
     TriggerClientEvent("tpz_admin:client:sendNUINotification", _source, Locales['TICKET_DELETED_SUCCESSFULLY'].text, "success", Locales['TICKET_DELETED_SUCCESSFULLY'].duration)
 
 end)
+
