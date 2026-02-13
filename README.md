@@ -38,7 +38,17 @@
 
 ## Information
 
-- We also provide a DevTools NUI block to be used by players without permissions. The ace permission is: `tpzcore.admin.devtools` or `tpzcore.admin.all`. We also provide the possibility through discord roles and group roles. 
+- We also provide a DevTools NUI block to be used by players without permissions. The ace permission is: `tpzcore.admin.devtools` or `tpzcore.admin.all`. We also provide the possibility through discord roles and group roles.
+
+## Screenshots
+
+<img width="1183" height="836" alt="image" src="https://github.com/user-attachments/assets/093f4e43-05e6-49f0-aa41-4458c04e1d2e" />
+<img width="1712" height="983" alt="image" src="https://github.com/user-attachments/assets/4e40fdd4-f266-416f-a40e-196e78e44ff7" />
+<img width="1719" height="981" alt="image" src="https://github.com/user-attachments/assets/ad94c5df-f88b-4717-ad81-33e6788ac532" />
+<img width="1718" height="982" alt="image" src="https://github.com/user-attachments/assets/99299f5e-514e-47d8-b17f-42725ccec47d" />
+<img width="1719" height="973" alt="image" src="https://github.com/user-attachments/assets/7d1308b4-41ca-4fcd-9df5-176406868818" />
+<img width="1719" height="985" alt="image" src="https://github.com/user-attachments/assets/125db2eb-24f8-490c-becc-1690818d692b" />
+<img width="1718" height="987" alt="image" src="https://github.com/user-attachments/assets/c2d1008d-353c-49af-b28f-a88f8e69c4ab" />
 
 ## Disclaimer & Credits
 
